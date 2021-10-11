@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://www.estructurasfinancieras.com.ar/static/favicon.ico">
+  <title>Estructuras Financieras - Registrar Física</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/swiper@7/swiper-bundle.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <img src="img/logo.png" class="logo">
+
+  <div id="swiper" class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="container pb-5">
+          <div class="row pb-2">
+            <div class="col-md-6 offset-md-3 text-center">
+              <h1 class="pt-5">APERTURA DE CUENTA</h1>
+              <p class="detail px-5">¿Estás ingresando por un asesor financiero,<br>un productor o un referido?</p>
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <div class="row mb-3">
+                    <div class="col-2">
+                      <div class="form-group mt-2">
+                        <div class="checkbox checbox-switch switch-primary">
+                          <label>
+                            <input type="checkbox" id="email_contacto_chk" value="on" checked>
+                            <span></span>                                        
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-10 ps-0">
+                      <input type="email" id="email_contacto" class="form-control" placeholder="e-mail del contacto">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2>DATOS PERSONALES</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10 offset-md-1 text-center">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre completo</label>
+                  <input type="text" id="nombre" class="form-control">
+                  <div class="form-control-info"></div>
+                </div>
+                <div class="col-md-6">
+                  <label for="apellido" class="form-label">Apellido</label>
+                  <input type="text" id="apellido" class="form-control">
+                  <div class="form-control-info"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">e-mail</label>
+                  <input type="email" id="email" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label for="telefono-area" class="form-label">Celular</label>
+                  <div class="row">
+                    <div class="col-2 pr-0">
+                      <input type="text" id="telefono" class="form-control" value="+54" readonly>
+                    </div>
+                    <div class="col-2 px-0">
+                      <input type="number" id="telefono-area" class="form-control">
+                      <div class="form-control-info">COD. DE ÁREA SIN EL 0</div>
+                    </div>
+                    <div class="col-8 pl-0">
+                      <input type="number" id="telefono-numero" class="form-control" placeholder="Celular">
+                      <div class="form-control-info">NRO. DE CELULAR SIN EL 15</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-6">
+                  <label for="cuit" class="form-label">Cuit / Cuil / CDI</label>
+                  <input type="text" id="cuit" class="form-control">
+                </div>
+                <div class="col-md-6">
+                  <label for="nacimiento-dia" class="form-label">Fecha de nacimiento</label>
+                  <div class="row">
+                    <div class="col-4">
+                      <input type="number" id="nacimiento-dia" class="form-control" placeholder="DD">
+                    </div>
+                    <div class="col-4">
+                      <input type="number" id="nacimiento-mes" class="form-control" placeholder="MM">
+                    </div>
+                    <div class="col-4">
+                      <input type="number" id="nacimiento-anio" class="form-control" placeholder="AAAA">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-4 offset-md-4">
+                  <label class="form-label">Sexo</label>
+                  <div class="row">
+                    <div class="col-6">
+                      <button type="button" id="genero-f" class="btn btn-form">FEMENINO</button>
+                    </div>
+                    <div class="col-6">
+                      <button type="button" id="genero-m" class="btn btn-form">MASCULINO</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="form-label">Estado civil</label>
+                  <div class="row estado_civil-btns">
+                    <div class="col-3 px-0">
+                      <button type="button" id="estado_civil-s" class="btn btn-form">SOLTERO</button>
+                    </div>
+                    <div class="col-3 px-0">
+                      <button type="button" id="estado_civil-c" class="btn btn-form">CASADO</button>
+                    </div>
+                    <div class="col-3 px-0">
+                      <button type="button" id="estado_civil-d" class="btn btn-form">DIVORCIADO</button>
+                    </div>
+                    <div class="col-3 px-0">
+                      <button type="button" id="estado_civil-v" class="btn btn-form">VIUDO</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">País de residencia / Nacionalidad</label>
+                  <div class="row">
+                    <div class="col-6">
+                      <select id="nacionalidad" class="form-select">
+                        <option value="" hidden selected>RESIDENCIA</option>
+                        <option value="3">Afganistán</option>
+                        <option value="4">Albania</option>
+                        <option value="5">Alemania</option>
+                        <option value="6">Andorra</option>
+                        <option value="7">Angola</option>
+                        <option value="8">Anguila</option>
+                        <option value="9">Antártida</option>
+                        <option value="10">Antigua y Barbuda</option>
+                        <option value="11">Arabia Saudi</option>
+                        <option value="12">Argelia</option>
+                        <option value="13">Argentina</option>                
+                      </select>
+                    </div>
+                    <div class="col-6 text-start">
+                      <select id="dom_pais" class="form-select">
+                        <option value="" hidden selected>NACIONALIDAD</option>
+                        <option value="3">Afganistán</option>
+                        <option value="4">Albania</option>
+                        <option value="5">Alemania</option>
+                        <option value="6">Andorra</option>
+                        <option value="7">Angola</option>
+                        <option value="8">Anguila</option>
+                        <option value="9">Antártida</option>
+                        <option value="10">Antigua y Barbuda</option>
+                        <option value="11">Arabia Saudi</option>
+                        <option value="12">Argelia</option>
+                        <option value="13">Argentina</option>                
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-end pb-5">
+          <button type="button" class="btn btn-primary" id="btn1">CONTINUAR</button>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="container pb-5">
+          <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+              <h1 class="pt-5 pb-3">APERTURA DE CUENTA</h1>
+              <h2>VERIFICACIÓN DE DOMICILIO</h2>
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <label for="domicilio" class="form-label">Domicilio</label>
+                  <input type="text" id="domicilio" class="form-control">
+                </div>
+                <div class="col-md-10 offset-md-1">
+                  <div class="row">
+                    <div class="col-4">
+                      <input type="text" id="dom_numero" class="form-control" placeholder="Nro.">
+                    </div>
+                    <div class="col-4">
+                      <input type="text" id="dom_piso" class="form-control" placeholder="Piso">
+                    </div>
+                    <div class="col-4">
+                      <input type="text" id="dom_departamento" class="form-control" placeholder="Dpto.">
+                    </div>
+                    <div class="col-4">
+                      <input type="text" id="dom_codigo_postal" class="form-control" placeholder="CP.">
+                    </div>
+                    <div class="col-4">
+                      <select id="dom_provincia" class="form-select">
+                        <option value="" hidden selected>Pcia.</option>
+                        <option value="1" data-pais="13">Buenos Aires</option>
+                        <option value="2" data-pais="13">CABA</option>
+                        <option value="3" data-pais="13">Catamarca</option>
+                        <option class="provincia" value="4" data-pais="13">Chaco</option>              
+                      </select>
+                    </div>
+                    <div class="col-4">
+                      <input type="text" id="dom_localidad" class="form-control" placeholder="Localidad">
+                    </div>
+                    <div class="col-12 text-start mb-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="estadounidense">
+                        <label class="form-check-label" for="estadounidense">
+                          No soy ciudadano de Estados Unidos
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12 text-start">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="residencia_fiscal_extranjera">
+                            <label class="form-check-label pb-3" for="residencia_fiscal_extranjera">
+                              País de residencia fiscal
+                            </label>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <select id="residencia_extranjera" class="form-select">
+                            <option value="3">Afganistán</option>
+                            <option value="4">Albania</option>
+                            <option value="5">Alemania</option>
+                            <option value="6">Andorra</option>
+                            <option value="7">Angola</option>
+                            <option value="8">Anguila</option>
+                            <option value="9">Antártida</option>
+                            <option value="10">Antigua y Barbuda</option>
+                            <option value="11">Arabia Saudi</option>
+                            <option value="12">Argelia</option>
+                            <option value="13" selected>Argentina</option>                
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <div id="obligado_uif-container" class="row">
+                        <div class="col-12 text-start mb-2">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="true" id="obligado_uif">
+                            <label id="obligado_uif-label" class="form-check-label" for="obligado_uif">
+                              Sujeto obligado UIF
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <h4>¿Sos una persona políticamente expuesta?</h4>
+                    </div>
+                    <div class="d-grid gap-2">
+                      <button type="button" id="politico-no" class="btn btn-form mb-1"><span>NO SOY</span> una persona políticamente expuesta</button>
+                      <button type="button" id="politico-si" class="btn btn-form"><span>SOY</span> una persona políticamente expuesta</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="politico-info">
+                        Se consideran PEPs (Persona Expuesta Políticamente) a los Funcionarios y/o Directores
+                        Públicos Nacionales, Provinciales y Municipales (tanto nacionales como estranjeros) de<br>
+                        los Poderes Ejecutivo, Legislativo y Judicial, de empresas de Estado u organismos estata-<br>
+                        les y de las organizaciones sindicales, que ocupan o que ocuparon altos cargos y/o<br>
+                        puestos jerárquicos, como así también a sus familiares hasta el primer grado de consan-<br>
+                        guinidad (padres, hijos y conyugue/conviviente y allegados cercanos)....
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-end pb-5">
+          <button type="button" class="btn btn-block btn-primary" id="btn2">CONTINUAR</button>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="container pb-5">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h1 class="pt-5 pb-3">APERTURA DE CUENTA</h1>
+              <p class="detail-laboral px-5 pb-2">¡Muy bien! Vas perfecto, necesitamos<br>saber algunos datos<br>sobre tu actividad laboral.</p>
+              <h2>DATOS LABORALES</h2>
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <div class="row actividad_laboral-btns px-1">
+                    <label class="form-label">Seleccioná tu actividad laboral actual</label>
+                    <div class="col-4 px-2">
+                      <button type="button" id="actividad_laboral-rd" class="btn btn-form">RELACION DE DEPENDENCIA</button>
+                    </div>
+                    <div class="col-4 px-2">
+                      <button type="button" id="actividad_laboral-p" class="btn btn-form">PROFESIONAL</button>
+                    </div>
+                    <div class="col-4 px-2">
+                      <button type="button" id="actividad_laboral-e" class="btn btn-form">ESTUDIANTE</button>
+                    </div>
+                    <div class="col-4 px-2">
+                      <button type="button" id="actividad_laboral-ec" class="btn btn-form">EMPRESARIO / COMERCIANTE</button>
+                    </div>
+                    <div class="col-4 px-2">
+                      <button type="button" id="actividad_laboral-m" class="btn btn-form">MONOTRIBUTISTA</button>
+                    </div>
+                    <div class="col-4 px-2">
+                      <button type="button" id="actividad_laboral-j" class="btn btn-form">JUBILADO</button>
+                    </div>
+                  </div>
+                  <div class="col-12 mb-4">
+                    <input type="text" id="actividad_laboral-o" class="form-control" placeholder="OTRA.....................................................................................................................................">
+                  </div>
+                  <div class="actividad_laboral-container">
+                    <div class="col-12">
+                      <label for="actividad_laboral_empresa" class="form-label">NOMBRE DE LA EMPRESA O TITULAR</label>
+                      <input type="text" id="actividad_laboral_empresa" class="form-control">
+                    </div>
+                    <div class="col-12">
+                      <label for="actividad_laboral_principal" class="form-label">ACTIVIDAD PRINCIPAL</label>
+                      <input type="text" id="actividad_laboral_principal" class="form-control">
+                    </div>
+                    <div class="col-12">
+                      <label for="iva" class="form-label">RESPONSABILIDAD IMPOSITIVA (IVA – GCIAS)</label>
+                      <input type="text" id="iva" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-end">
+          <button type="button" class="btn btn-primary" id="btn3">CONTINUAR</button>
+        </div>
+      </div>
+      <div class="swiper-slide slide4">
+        <div class="container pb-5">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h1 class="pt-5 pb-3">APERTURA DE CUENTA</h1>
+              <h2>NORMATIVAS Y SITUACIÓN FINANACIERA</h2>
+              <div class="row">
+                <div class="col-md-10 offset-md-1 mt-3">
+                  <div class="situacion_financiera-container">
+                    <div class="col-12">
+                      <label for="ingreso_promedio" class="form-label">INGRESO ANUAL PROMEDIO</label>
+                      <select id="ingreso_promedio" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="1">Menos de ARS 500.000</option>
+                        <option value="2">Entre ARS 500.000 y ARS 1.000.000</option>
+                        <option value="3">Más de ARS 1.000.000</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label for="patrimonio" class="form-label">PATRIMONIO NETO</label>
+                      <input type="text" id="patrimonio" class="form-control">
+                    </div>
+                    <div class="col-12 pb-2">
+                      <label for="porcentajeInversion" class="form-label">PORCENTAJE DEL PATRIMONIO NETO DESTINADO A INVERSIONES</label>
+                      <input type="range" step="5" min="0" max="100" id="porcentajeInversion" value="20">
+                      <div class="porcentajeInversion-percentage text-end">&nbsp;20%</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="procedenciaIngresos" class="form-label">PROCEDENCIA DE LOS INGRESOS</label>
+                      <input type="text" id="procedenciaIngresos" class="form-control">
+                    </div>
+                    <div class="col-12">
+                      <label for="tolerancia" class="form-label">¿CUÁL ES TU PERFIL DE RIESGO?</label>
+                      <select id="tolerancia" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="Conservador">Conservador</option>
+                        <option value="Moderado">Moderado</option>
+                        <option value="Arriesgado">Arriesgado</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-end">
+          <button type="button" class="btn btn-primary" id="btn4">CONTINUAR</button>
+        </div>
+      </div>
+      <div class="swiper-slide slide5">
+        <div class="container pb-4">
+          <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+              <h1 class="pt-5 pb-4">APERTURA DE CUENTA</h1>
+              <h3>FINALIZAR APERTURA DE CUENTA</h3>
+              <h2>VERIFICACION DE IDENTIDAD</h2>
+              <p>Luego de verificar tu identidad, deberás realizar una transferencia a alguna de<br>nuestras cuentas bancarias para activar tu cuenta comitente y comenzar a invertir.</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <button type="button" class="btn btn-primary" id="btn5">
+            <img src="img/entry.png" alt="Iniciar">
+            INICIAR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script>
+$(function() {
+
+  const formData = {};
+
+  const $btn1 = $('#btn1');
+  const $btn2 = $('#btn2');
+  const $btn3 = $('#btn3');
+  const $btn4 = $('#btn4');
+  
+  const $emailContactoChk = $('#email_contacto_chk');
+  const $emailContacto = $('#email_contacto');
+  const $nombre = $('#nombre');
+  const $apellido = $('#apellido');
+  const $email = $('#email');
+  const $telefonoArea = $('#telefono-area');
+  const $telefonoNumero = $('#telefono-numero');
+
+  const $generoF = $('#genero-f');
+  const $generoM = $('#genero-m');
+
+  const $estadoCivilS = $('#estado_civil-s');
+  const $estadoCivilC = $('#estado_civil-c');
+  const $estadoCivilD = $('#estado_civil-d');
+  const $estadoCivilV = $('#estado_civil-v');
+
+  const $estadoCivilBtns = $('.estado_civil-btns');
+
+  const $domicilio = $('#domicilio');
+
+  const $politicoNo = $('#politico-no');
+  const $politicoSi = $('#politico-si');
+
+  const $actividadLaboralRd = $('#actividad_laboral-rd');
+  const $actividadLaboralP = $('#actividad_laboral-p');
+  const $actividadLaboralE = $('#actividad_laboral-e');
+  const $actividadLaboralEc = $('#actividad_laboral-ec');
+  const $actividadLaboralM = $('#actividad_laboral-m');
+  const $actividadLaboralJ = $('#actividad_laboral-j');
+
+  const $actividadLaboralBtns = $('.actividad_laboral-btns');
+  
+  const swiper = new Swiper("#swiper", {
+    allowSlidePrev: false,
+    allowTouchMove: false,
+    speed: 500
+    
+    //effect: "creative",
+    //creativeEffect: {
+    //  prev: {
+    //    translate: ["-120%", 0, -500],
+    //  },
+    //  next: {  
+    //    translate: ["120%", 0, -500],
+    //  }
+    //}
+  });
+
+  /*
+  swiper.on('slideChange', function() {
+    switch(swiper.activeIndex) {
+      case 1:
+        $domicilio.focus(); 
+    }
+  });
+  */
+
+  $emailContactoChk.change(function() {
+    if($(this).val() === 'on') {
+      $(this).val('off');
+      $emailContacto.attr('disabled', true);
+    } else {
+      $(this).val('on');
+      $emailContacto.attr('disabled', false);
+    }
+  });
+
+  $generoF.click(function() {
+    $(this).addClass('active');
+    $generoM.removeClass('active');
+  });
+  $generoM.click(function() {
+    $(this).addClass('active');
+    $generoF.removeClass('active');
+  });
+
+  $estadoCivilS.click(function() {
+    cleanEstadoCivilBtns();
+    $(this).addClass('active');
+  });
+  $estadoCivilC.click(function() {
+    cleanEstadoCivilBtns();
+    $(this).addClass('active');
+  });
+  $estadoCivilD.click(function() {
+    cleanEstadoCivilBtns();
+    $(this).addClass('active');
+  });
+  $estadoCivilV.click(function() {
+    cleanEstadoCivilBtns();
+    $(this).addClass('active');
+  });
+
+  function cleanEstadoCivilBtns() {
+    $estadoCivilBtns.each(function() {
+      $(this).find('button').removeClass('active');
+    });
+  }
+
+  $politicoNo.click(function() {
+    $(this).addClass('active');
+    $politicoSi.removeClass('active');
+  });
+  $politicoSi.click(function() {
+    $(this).addClass('active');
+    $politicoNo.removeClass('active');
+  });
+
+  $actividadLaboralRd.click(function() {
+    cleanActividadLaboralBtns();
+    $(this).addClass('active');
+  });
+  $actividadLaboralP.click(function() {
+    cleanActividadLaboralBtns();
+    $(this).addClass('active');
+  });
+  $actividadLaboralE.click(function() {
+    cleanActividadLaboralBtns();
+    $(this).addClass('active');
+  });
+  $actividadLaboralEc.click(function() {
+    cleanActividadLaboralBtns();
+    $(this).addClass('active');
+  });
+  $actividadLaboralM.click(function() {
+    cleanActividadLaboralBtns();
+    $(this).addClass('active');
+  });
+  $actividadLaboralJ.click(function() {
+    cleanActividadLaboralBtns();
+    $(this).addClass('active');
+  });
+
+  function cleanActividadLaboralBtns() {
+    $actividadLaboralBtns.each(function() {
+      $(this).find('button').removeClass('active');
+    });
+  }
+
+  $btn1.click(function() {
+    if(!validate1()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
+    console.log(formData);
+  });
+  $btn2.click(function() {
+    if(validate2()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
+    console.log(formData);
+  });
+  $btn3.click(function() {
+    if(validate3()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
+    console.log(formData);
+  });
+  $btn4.click(function() {
+    if(validate4()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
+    console.log(formData);
+  });
+
+  function validate1() {
+    
+    let res = true;
+
+    formData.nombre = $nombre.val().trim();
+    formData.apellido = $apellido.val().trim();
+    formData.email = $email.val().trim();
+
+    const telefonoArea = $telefonoArea.val().trim();
+    const telefonoNumero = $telefonoNumero.val().trim();
+
+    if(formData.nombre === '') {
+      $nombre.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
+      res = false;
+    } else {
+      $nombre.removeClass('form-invalid').next().text('');
+    }
+    if(formData.apellido === '') {
+      $apellido.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
+      res = false;
+    } else {
+      $apellido.removeClass('form-invalid').next().text('');
+    }
+    if(formData.email === '') {
+      $email.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
+      res = false;
+    } else {
+      $email.removeClass('form-invalid').next().text('');
+    }
+
+    return res;
+  }
+
+  function validate2() {
+    let res = true;
+
+    return res;
+  }
+
+  function validate3() {
+    let res = true;
+
+    return res;
+  }
+
+  function validate4() {
+    let res = true;
+
+    return res;
+  }
+
+  $('#porcentajeInversion').on('input', function () {
+    handlePorcentajeInversion($(this));
+  });
+
+  function handlePorcentajeInversion($pi) {
+    
+    const min = $pi.attr('min');
+    const max = $pi.attr('max');
+    const val = $pi.val();
+    
+    $pi.css("background-size", (val - min) * 100 / (max - min) + '% 100%');
+    $('.porcentajeInversion-percentage').html('&nbsp;' + $pi.val() + '%')
+  }
+
+/*
+  const rangeInputs = document.querySelectorAll('input[type="range"]')
+  const numberInput = document.querySelector('.porcentajeInversion-percentage')
+
+//console.log(numberInput)
+
+function handleInputChange(e) {
+  let target = e.target
+  if (e.target.type !== 'range') {
+    target = document.getElementById('range')
+  } 
+  const min = target.min
+  const max = target.max
+  const val = target.value
+
+  //$('.numberInput').text(val)
+  console.log(val)
+  
+  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+}
+
+rangeInputs.forEach(input => {
+  input.addEventListener('input', handleInputChange)
+})
+*/
+
+//numberInput.addEventListener('input', handleInputChange)
+
+});
+</script>
+</body>
+</html>
