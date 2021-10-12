@@ -411,6 +411,30 @@
           </button>
         </div>
       </div>
+      <div class="swiper-slide slide6">
+        <div class="container pb-4">
+          <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+              <h1 class="pt-5 pb-2">Verifiquemos tu identidad</h1>
+              <p>Para verificar tu identidad es necesario<br>que subas fotos de documentos que la acrediten.</p>
+              <div class="row">
+                <div class="col-md-10 offset-md-1">
+                  <div class="row mb-5 mt-4">
+                    <div class="col-6 offset-3 my-2">
+                      <img src="img/dni.png" class="img-fluid" alt="DNI">
+                    </div>
+                  </div>
+                  <p class="mb-1">Al hacer click en el botón Iniciar, aceptás nuestros<br><a href="#" target="_blank">Términos de Servicio</a> y nuestra <a href="#" target="_blank">Política de Privacidad</a>.</p>
+                  <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary" id="btn6">INICIAR</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
   </div>
 
@@ -427,6 +451,7 @@ $(function() {
   const $btn2 = $('#btn2');
   const $btn3 = $('#btn3');
   const $btn4 = $('#btn4');
+  const $btn5 = $('#btn5');
   
   const $emailContactoChk = $('#email_contacto_chk');
   const $emailContacto = $('#email_contacto');
@@ -594,6 +619,10 @@ $(function() {
       window.scrollTo(0, 0);
     }
     console.log(formData);
+  });
+  $btn5.click(function() {
+    swiper.slideNext();
+    window.scrollTo(0, 0);
   });
 
   function validate1() {
