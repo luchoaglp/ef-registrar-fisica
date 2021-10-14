@@ -405,7 +405,7 @@ input[type=checkbox], input[type=radio] {
   vertical-align: top;
 }
 
-.slide6 h1 {
+.slide6 h1, .slide7 h1 {
   font-family: 'BambinoHS-Light', Helvetica, Arial, sans-serif;
   font-size: 2.1rem;
 }
@@ -423,5 +423,30 @@ input[type=checkbox], input[type=radio] {
   font-size: 1.9rem;
   margin-right: 0;
   padding: .6rem 0 .1rem 0;
+}
+
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-file {
+  border: 2px solid #7987a4;
+  color: #a0a0a0;
+  background-color: white;
+  padding: 24px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  max-width: 185px;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 

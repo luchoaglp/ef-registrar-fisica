@@ -16,6 +16,7 @@
 
   <div id="swiper" class="swiper">
     <div class="swiper-wrapper">
+
       <div class="swiper-slide">
         <div class="container pb-5">
           <div class="row pb-2">
@@ -433,7 +434,22 @@
             </div>
           </div>
         </div>
-        
+      </div>
+
+      <div class="swiper-slide slide7">
+        <div class="container pb-4">
+          <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+              <h1 class="pt-5 pb-4">DNI</h1>
+
+              <div class="upload-btn-wrapper">
+                <button id="btn-file1" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
+                <input type="file" id="foto1" accept=".png, .jpg, .jpeg, .pdf">
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -452,6 +468,7 @@ $(function() {
   const $btn3 = $('#btn3');
   const $btn4 = $('#btn4');
   const $btn5 = $('#btn5');
+  const $btn6 = $('#btn6');
   
   const $emailContactoChk = $('#email_contacto_chk');
   const $emailContacto = $('#email_contacto');
@@ -484,6 +501,9 @@ $(function() {
   const $actividadLaboralJ = $('#actividad_laboral-j');
 
   const $actividadLaboralBtns = $('.actividad_laboral-btns');
+
+  const $foto1 = $('#foto1');
+  const $btnFile1 = $('#btn-file1');
   
   const swiper = new Swiper("#swiper", {
     allowSlidePrev: false,
@@ -624,6 +644,10 @@ $(function() {
     swiper.slideNext();
     window.scrollTo(0, 0);
   });
+  $btn6.click(function() {
+    swiper.slideNext();
+    window.scrollTo(0, 0);
+  });
 
   function validate1() {
     
@@ -690,34 +714,20 @@ $(function() {
     $('.porcentajeInversion-percentage').html('&nbsp;' + $pi.val() + '%')
   }
 
-/*
-  const rangeInputs = document.querySelectorAll('input[type="range"]')
-  const numberInput = document.querySelector('.porcentajeInversion-percentage')
+  $foto1.change(function() {
+    const file = $(this)[0].files[0];
+    $btnFile1.html(file.name + '<br><b>' + bytesToSize(file.size) + '</b>').css('color', '#7987a4');
+    //$('#blah').attr('src', window.URL.createObjectURL(this.files[0]))
+  });
 
-//console.log(numberInput)
+  function bytesToSize(bytes) {
+   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+   if (bytes == 0) return '0 Byte';
+   const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+  }
 
-function handleInputChange(e) {
-  let target = e.target
-  if (e.target.type !== 'range') {
-    target = document.getElementById('range')
-  } 
-  const min = target.min
-  const max = target.max
-  const val = target.value
-
-  //$('.numberInput').text(val)
-  console.log(val)
-  
-  target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
-}
-
-rangeInputs.forEach(input => {
-  input.addEventListener('input', handleInputChange)
-})
-*/
-
-//numberInput.addEventListener('input', handleInputChange)
-
+  //console.log(myFile)
 });
 </script>
 </body>
