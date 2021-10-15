@@ -16,7 +16,6 @@
 
   <div id="swiper" class="swiper">
     <div class="swiper-wrapper">
-
       <div class="swiper-slide">
         <div class="container pb-5">
           <div class="row pb-2">
@@ -435,20 +434,26 @@
           </div>
         </div>
       </div>
-
       <div class="swiper-slide slide7">
         <div class="container pb-4">
           <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
               <h1 class="pt-5 pb-4">DNI</h1>
-
-              <div class="upload-btn-wrapper">
+              <div class="upload-btn-wrapper mb-2">
                 <button id="btn-file1" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
                 <input type="file" id="foto1" accept=".png, .jpg, .jpeg, .pdf">
               </div>
-
+              <h2 class="mb-4"><span>SUBIR PARTE</span> DELANTERA</h2>
+              <div class="upload-btn-wrapper my-2">
+                <button id="btn-file2" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
+                <input type="file" id="foto2" accept=".png, .jpg, .jpeg, .pdf">
+              </div>
+              <h2><span>SUBIR PARTE</span> TRASERA</h2>
             </div>
           </div>
+        </div>
+        <div class="container-fluid text-end">
+          <button type="button" class="btn btn-primary" id="btn7">CONTINUAR</button>
         </div>
       </div>
     </div>
@@ -469,6 +474,7 @@ $(function() {
   const $btn4 = $('#btn4');
   const $btn5 = $('#btn5');
   const $btn6 = $('#btn6');
+  const $btn7 = $('#btn7');
   
   const $emailContactoChk = $('#email_contacto_chk');
   const $emailContacto = $('#email_contacto');
@@ -648,6 +654,13 @@ $(function() {
     swiper.slideNext();
     window.scrollTo(0, 0);
   });
+  $btn7.click(function() {
+    if(validate7()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
+    console.log(formData);
+  });
 
   function validate1() {
     
@@ -695,6 +708,12 @@ $(function() {
   }
 
   function validate4() {
+    let res = true;
+
+    return res;
+  }
+
+  function validate7() {
     let res = true;
 
     return res;
