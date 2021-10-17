@@ -558,6 +558,7 @@ $(function() {
   const $nacionalidad = $('#nacionalidad');
 
   const $domicilio = $('#domicilio');
+  const $domNumero = $('#dom_numero');
 
   const $politicoNo = $('#politico-no');
   const $politicoSi = $('#politico-si');
@@ -750,8 +751,7 @@ $(function() {
   });
   $btn9.click(function() {
     if(validate9()) {
-      //swiper.slideNext();
-      //window.scrollTo(0, 0);
+      
     }
     console.log(formData);
     alert(JSON.stringify(formData));
@@ -761,6 +761,7 @@ $(function() {
     
     let res = true;
 
+    formData.email_contacto = $emailContacto.val().trim();
     formData.nombre = $nombre.val().trim();
     formData.apellido = $apellido.val().trim();
     formData.email = $email.val().trim();
@@ -776,7 +777,8 @@ $(function() {
     const nacimientoMes = $nacimientoMes.val();
     const nacimientoAnio = $nacimientoAnio.val();
 
-    formData.nacimiento = `${nacimientoDia}-${nacimientoMes}-${nacimientoAnio}`;
+    //formData.nacimiento = `${nacimientoDia}-${nacimientoMes}-${nacimientoAnio}`;
+    formData.nacimiento = new Date(`${nacimientoAnio}-${nacimientoMes}-${nacimientoDia}`);
 
     formData.genero = genero;
     formData.estado_civil = estado_civil;
@@ -807,7 +809,11 @@ $(function() {
   }
 
   function validate2() {
+
     let res = true;
+
+    formData.domicilio = $domicilio.val().trim();
+    formData.dom_numero = $domNumero.val().trim();
 
     return res;
   }
