@@ -70,11 +70,11 @@
                       <input type="text" id="telefono" class="form-control" value="+54" readonly>
                     </div>
                     <div class="col-2 px-0">
-                      <input type="number" id="telefono-area" class="form-control">
+                      <input type="number" id="telefono-area" class="form-control" min="0" max="999">
                       <div class="form-control-info">COD. DE ÁREA SIN EL 0</div>
                     </div>
                     <div class="col-8 pl-0">
-                      <input type="number" id="telefono-numero" class="form-control" placeholder="Celular">
+                      <input type="number" id="telefono-numero" class="form-control" placeholder="Celular" min="0">
                       <div class="form-control-info">NRO. DE CELULAR SIN EL 15</div>
                     </div>
                   </div>
@@ -89,13 +89,13 @@
                   <label for="nacimiento-dia" class="form-label">Fecha de nacimiento</label>
                   <div class="row">
                     <div class="col-4">
-                      <input type="number" id="nacimiento-dia" class="form-control" placeholder="DD">
+                      <input type="number" id="nacimiento-dia" class="form-control" placeholder="DD" min="1" max="31">
                     </div>
                     <div class="col-4">
-                      <input type="number" id="nacimiento-mes" class="form-control" placeholder="MM">
+                      <input type="number" id="nacimiento-mes" class="form-control" placeholder="MM" min="1" max="12">
                     </div>
                     <div class="col-4">
-                      <input type="number" id="nacimiento-anio" class="form-control" placeholder="AAAA">
+                      <input type="number" id="nacimiento-anio" class="form-control" placeholder="AAAA" min="1900">
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@
                   <label class="form-label">País de residencia / Nacionalidad</label>
                   <div class="row">
                     <div class="col-6">
-                      <select id="nacionalidad" class="form-select">
+                      <select id="dom_pais" class="form-select">
                         <option value="" hidden selected>RESIDENCIA</option>
                         <option value="3">Afganistán</option>
                         <option value="4">Albania</option>
@@ -151,7 +151,7 @@
                       </select>
                     </div>
                     <div class="col-6 text-start">
-                      <select id="dom_pais" class="form-select">
+                      <select id="nacionalidad" class="form-select">
                         <option value="" hidden selected>NACIONALIDAD</option>
                         <option value="3">Afganistán</option>
                         <option value="4">Albania</option>
@@ -537,8 +537,12 @@ $(function() {
   const $nombre = $('#nombre');
   const $apellido = $('#apellido');
   const $email = $('#email');
+  const $cuit = $('#cuit');
   const $telefonoArea = $('#telefono-area');
   const $telefonoNumero = $('#telefono-numero');
+  const $nacimientoDia = $('#nacimiento-dia');
+  const $nacimientoMes = $('#nacimiento-mes');
+  const $nacimientoAnio = $('#nacimiento-anio');
 
   const $generoF = $('#genero-f');
   const $generoM = $('#genero-m');
@@ -549,6 +553,9 @@ $(function() {
   const $estadoCivilV = $('#estado_civil-v');
 
   const $estadoCivilBtns = $('.estado_civil-btns');
+
+  const $domPais = $('#dom_pais');
+  const $nacionalidad = $('#nacionalidad');
 
   const $domicilio = $('#domicilio');
 
@@ -574,6 +581,9 @@ $(function() {
   const $btnFile4 = $('#btn-file4');
   const $resumenBancario = $('#resumenBancario');
   const $btnFile5 = $('#btn-file5');
+
+  let genero = '';
+  let estado_civil = '';
   
   const swiper = new Swiper("#swiper", {
     allowSlidePrev: false,
@@ -613,27 +623,33 @@ $(function() {
   $generoF.click(function() {
     $(this).addClass('active');
     $generoM.removeClass('active');
+    genero = 'Mujer';
   });
   $generoM.click(function() {
     $(this).addClass('active');
     $generoF.removeClass('active');
+    genero = 'Hombre';
   });
 
   $estadoCivilS.click(function() {
     cleanEstadoCivilBtns();
     $(this).addClass('active');
+    estado_civil = 'Soltero';
   });
   $estadoCivilC.click(function() {
     cleanEstadoCivilBtns();
     $(this).addClass('active');
+    estado_civil = 'Casado';
   });
   $estadoCivilD.click(function() {
     cleanEstadoCivilBtns();
     $(this).addClass('active');
+    estado_civil = 'Divorciado';
   });
   $estadoCivilV.click(function() {
     cleanEstadoCivilBtns();
     $(this).addClass('active');
+    estado_civil = 'Viudo';
   });
 
   function cleanEstadoCivilBtns() {
@@ -683,7 +699,7 @@ $(function() {
   }
 
   $btn1.click(function() {
-    if(!validate1()) {
+    if(validate1()) {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
@@ -752,21 +768,37 @@ $(function() {
     const telefonoArea = $telefonoArea.val().trim();
     const telefonoNumero = $telefonoNumero.val().trim();
 
+    formData.telefono = telefonoArea + telefonoNumero;
+
+    formData.cuit = $cuit.val().trim();
+
+    const nacimientoDia = $nacimientoDia.val();
+    const nacimientoMes = $nacimientoMes.val();
+    const nacimientoAnio = $nacimientoAnio.val();
+
+    formData.nacimiento = `${nacimientoDia}-${nacimientoMes}-${nacimientoAnio}`;
+
+    formData.genero = genero;
+    formData.estado_civil = estado_civil;
+
+    formData.dom_pais = parseInt($domPais.val());
+    formData.nacionalidad = parseInt($nacionalidad.val());
+
     if(formData.nombre === '') {
       $nombre.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
-      res = false;
+      //res = false;
     } else {
       $nombre.removeClass('form-invalid').next().text('');
     }
     if(formData.apellido === '') {
       $apellido.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
-      res = false;
+      //res = false;
     } else {
       $apellido.removeClass('form-invalid').next().text('');
     }
     if(formData.email === '') {
       $email.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
-      res = false;
+      //res = false;
     } else {
       $email.removeClass('form-invalid').next().text('');
     }
