@@ -207,7 +207,7 @@
                         <option value="1" data-pais="13">Buenos Aires</option>
                         <option value="2" data-pais="13">CABA</option>
                         <option value="3" data-pais="13">Catamarca</option>
-                        <option class="provincia" value="4" data-pais="13">Chaco</option>              
+                        <option value="4" data-pais="13">Chaco</option>              
                       </select>
                     </div>
                     <div class="col-4">
@@ -215,7 +215,7 @@
                     </div>
                     <div class="col-12 text-start mb-2">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="true" id="estadounidense">
+                        <input class="form-check-input" type="checkbox" id="estadounidense">
                         <label class="form-check-label" for="estadounidense">
                           No soy ciudadano de Estados Unidos
                         </label>
@@ -225,7 +225,7 @@
                       <div class="row">
                         <div class="col-md-7">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="true" id="residencia_fiscal_extranjera">
+                            <input class="form-check-input" type="checkbox" id="residencia_fiscal_extranjera">
                             <label class="form-check-label pb-3" for="residencia_fiscal_extranjera">
                               País de residencia fiscal
                             </label>
@@ -252,7 +252,7 @@
                       <div id="obligado_uif-container" class="row">
                         <div class="col-12 text-start mb-2">
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="true" id="obligado_uif">
+                            <input class="form-check-input" type="checkbox" id="obligado_uif">
                             <label id="obligado_uif-label" class="form-check-label" for="obligado_uif">
                               Sujeto obligado UIF
                             </label>
@@ -559,6 +559,20 @@ $(function() {
 
   const $domicilio = $('#domicilio');
   const $domNumero = $('#dom_numero');
+  const $domPiso = $('#dom_piso'); 
+  const $domDepartamento = $('#dom_departamento');
+  const $domCodigoPostal = $('#dom_codigo_postal');
+
+  const $domProvincia = $('#dom_provincia');
+
+  const $domLocalidad = $('#dom_localidad');
+
+  const $estadounidense = $('#estadounidense');
+  const $residenciaFiscalExtranjera = $('#residencia_fiscal_extranjera');
+
+  const $residenciaExtranjera = $('#residencia_extranjera');
+
+  const $obligadoUif = $('#obligado_uif');
 
   const $politicoNo = $('#politico-no');
   const $politicoSi = $('#politico-si');
@@ -585,6 +599,7 @@ $(function() {
 
   let genero = '';
   let estado_civil = '';
+  let politico = '';
   
   const swiper = new Swiper("#swiper", {
     allowSlidePrev: false,
@@ -662,10 +677,12 @@ $(function() {
   $politicoNo.click(function() {
     $(this).addClass('active');
     $politicoSi.removeClass('active');
+    politico = false;
   });
   $politicoSi.click(function() {
     $(this).addClass('active');
     $politicoNo.removeClass('active');
+    politico = true;
   });
 
   $actividadLaboralRd.click(function() {
@@ -814,6 +831,16 @@ $(function() {
 
     formData.domicilio = $domicilio.val().trim();
     formData.dom_numero = $domNumero.val().trim();
+    formData.dom_piso = $domPiso.val().trim();
+    formData.dom_departamento = $domDepartamento.val().trim();
+    formData.dom_codigo_postal = $domCodigoPostal.val().trim();
+    formData.dom_provincia = parseInt($domProvincia.val());
+    formData.dom_localidad = $domLocalidad.val().trim();
+    formData.estadounidense = $estadounidense.is(':checked');
+    formData.residencia_fiscal_extranjera = $residenciaFiscalExtranjera.is(':checked');
+    formData.residencia_extranjera = parseInt($residenciaExtranjera.val());
+    formData.obligado_uif = $obligadoUif.is(':checked');
+    formData.politico = politico;
 
     return res;
   }
@@ -831,7 +858,10 @@ $(function() {
   }
 
   function validate7() {
+
     let res = true;
+
+    formData.foto1 = $foto1[0].files[0];
 
     return res;
   }
