@@ -594,6 +594,8 @@ $(function() {
   const $ingresoPromedio = $('#ingreso_promedio');
   const $patrimonio = $('#patrimonio');
   const $porcentajeInversion = $('#porcentajeInversion');
+  const $procedenciaIngresos = $('#procedenciaIngresos');
+  const $tolerancia = $('#tolerancia');
 
   const $foto1 = $('#foto1');
   const $btnFile1 = $('#btn-file1');
@@ -885,6 +887,8 @@ $(function() {
     formData.ingreso_promedio = parseInt($ingresoPromedio.val());
     formData.patrimonio = $patrimonio.val().trim();
     formData.porcentajeInversion = parseFloat($porcentajeInversion.val());
+    formData.procedenciaIngresos = $procedenciaIngresos.val().trim();
+    formData.tolerancia = $tolerancia.val();
 
     return res;
   }
