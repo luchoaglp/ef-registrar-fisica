@@ -583,6 +583,11 @@ $(function() {
   const $actividadLaboralEc = $('#actividad_laboral-ec');
   const $actividadLaboralM = $('#actividad_laboral-m');
   const $actividadLaboralJ = $('#actividad_laboral-j');
+  const $actividadLaboralO = $('#actividad_laboral-o');
+
+  const $actividadLaboralEmpresa = $('#actividad_laboral_empresa');
+  const $actividadLaboralPrincipal = $('#actividad_laboral_principal');
+  const $iva = $('#iva');
 
   const $actividadLaboralBtns = $('.actividad_laboral-btns');
 
@@ -600,6 +605,7 @@ $(function() {
   let genero = '';
   let estado_civil = '';
   let politico = '';
+  let actividad_laboral = '';
   
   const swiper = new Swiper("#swiper", {
     allowSlidePrev: false,
@@ -688,26 +694,32 @@ $(function() {
   $actividadLaboralRd.click(function() {
     cleanActividadLaboralBtns();
     $(this).addClass('active');
+    actividad_laboral = 'RELACION DE DEPENDENCIA';
   });
   $actividadLaboralP.click(function() {
     cleanActividadLaboralBtns();
     $(this).addClass('active');
+    actividad_laboral = 'PROFESIONAL';
   });
   $actividadLaboralE.click(function() {
     cleanActividadLaboralBtns();
     $(this).addClass('active');
+    actividad_laboral = 'ESTUDIANTE';
   });
   $actividadLaboralEc.click(function() {
     cleanActividadLaboralBtns();
     $(this).addClass('active');
+    actividad_laboral = 'EMPRESARIO-COMERCIANTE';
   });
   $actividadLaboralM.click(function() {
     cleanActividadLaboralBtns();
     $(this).addClass('active');
+    actividad_laboral = 'MONOTRIBUTISTA';
   });
   $actividadLaboralJ.click(function() {
     cleanActividadLaboralBtns();
     $(this).addClass('active');
+    actividad_laboral = 'JUBILADO';
   });
 
   function cleanActividadLaboralBtns() {
@@ -846,7 +858,18 @@ $(function() {
   }
 
   function validate3() {
+    
     let res = true;
+
+    formData.actividad_laboral = actividad_laboral;
+
+    if(formData.actividad_laboral === '') {
+      formData.actividad_laboral = $actividadLaboralO.val().trim();
+    }
+
+    formData.actividad_laboral_empresa = $actividadLaboralEmpresa.val().trim();
+    formData.actividad_laboral_principal = $actividadLaboralPrincipal.val().trim();
+    formData.iva = $iva.val().trim();
 
     return res;
   }
