@@ -591,6 +591,10 @@ $(function() {
 
   const $actividadLaboralBtns = $('.actividad_laboral-btns');
 
+  const $ingresoPromedio = $('#ingreso_promedio');
+  const $patrimonio = $('#patrimonio');
+  const $porcentajeInversion = $('#porcentajeInversion');
+
   const $foto1 = $('#foto1');
   const $btnFile1 = $('#btn-file1');
   const $foto2 = $('#foto2');
@@ -875,7 +879,12 @@ $(function() {
   }
 
   function validate4() {
+
     let res = true;
+
+    formData.ingreso_promedio = parseInt($ingresoPromedio.val());
+    formData.patrimonio = $patrimonio.val().trim();
+    formData.porcentajeInversion = parseFloat($porcentajeInversion.val());
 
     return res;
   }
@@ -901,7 +910,7 @@ $(function() {
     return res;
   }
 
-  $('#porcentajeInversion').on('input', function () {
+  $porcentajeInversion.on('input', function () {
     handlePorcentajeInversion($(this));
   });
 
