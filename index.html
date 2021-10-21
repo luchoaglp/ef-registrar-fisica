@@ -898,18 +898,26 @@ $(function() {
     let res = true;
 
     formData.foto1 = $foto1[0].files[0];
+    formData.foto2 = $foto2[0].files[0];
 
     return res;
   }
 
   function validate8() {
+
     let res = true;
+
+    formData.archivo_1 = $archivo1[0].files[0];
 
     return res;
   }
 
   function validate9() {
+
     let res = true;
+
+    formData.archivo_3 = $archivo3[0].files[0];
+    formData.resumenBancario = $resumenBancario[0].files[0];
 
     return res;
   }
