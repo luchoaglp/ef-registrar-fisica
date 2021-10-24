@@ -393,6 +393,7 @@
           <button type="button" class="btn btn-primary" id="btn4">CONTINUAR</button>
         </div>
       </div>
+      
       <div class="swiper-slide slide5">
         <div class="container pb-4">
           <div class="row">
@@ -507,7 +508,33 @@
           </div>
         </div>
         <div class="container-fluid text-end">
-          <button type="button" class="btn btn-primary" id="btn9">FINALIZAR</button>
+          <button type="button" class="btn btn-primary" id="btn9">CONTINUAR</button>
+        </div>
+      </div>
+      <div class="swiper-slide slide10">
+        <div class="container pb-4">
+          <div class="row">
+            <h3 class="mt-5 pt-5 pb-4">FIRMA DIGITAL</h3>
+            <div class="col-md-6 offset-md-3 text-center">
+              <div id="signature-pad" class="signature-pad">
+                <div class="signature-pad--body">
+                  <h3>RELIZAR FIRMA<br>CON EL MOUSE</h3>
+                  <canvas style="touch-action: none;" width="360" height="180"></canvas>
+                </div>
+                <div class="signature-pad--footer">
+                  <div class="signature-pad--actions">
+                    <div>
+                      <button type="button" class="button clear" data-action="clear">Limpiar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-end">
+          <button type="button" class="btn btn-primary" id="btn10">CONTINUAR</button>
         </div>
       </div>
     </div>
@@ -517,10 +544,12 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 <script>
 $(function() {
 
-  const formData = {};
+  const data = {};
+  const formData = new FormData();
 
   const $btn1 = $('#btn1');
   const $btn2 = $('#btn2');
@@ -531,6 +560,7 @@ $(function() {
   const $btn7 = $('#btn7');
   const $btn8 = $('#btn8');
   const $btn9 = $('#btn9');
+  const $btn10 = $('#btn10');
   
   const $emailContactoChk = $('#email_contacto_chk');
   const $emailContacto = $('#email_contacto');
@@ -739,28 +769,28 @@ $(function() {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
-    console.log(formData);
+    console.log(data);
   });
   $btn2.click(function() {
     if(validate2()) {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
-    console.log(formData);
+    console.log(data);
   });
   $btn3.click(function() {
     if(validate3()) {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
-    console.log(formData);
+    console.log(data);
   });
   $btn4.click(function() {
     if(validate4()) {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
-    console.log(formData);
+    console.log(data);
   });
   $btn5.click(function() {
     swiper.slideNext();
@@ -775,65 +805,74 @@ $(function() {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
-    console.log(formData);
+    console.log(data);
   });
   $btn8.click(function() {
     if(validate8()) {
       swiper.slideNext();
       window.scrollTo(0, 0);
     }
-    console.log(formData);
+    console.log(data);
   });
   $btn9.click(function() {
     if(validate9()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
+    console.log(data);
+  });
+  $btn10.click(function() {
+    if(validate10()) {
       
     }
-    console.log(formData);
-    alert(JSON.stringify(formData));
+    console.log(data);
+    submit();
+    alert(JSON.stringify(data));
   });
+
 
   function validate1() {
     
     let res = true;
 
-    formData.email_contacto = $emailContacto.val().trim();
-    formData.nombre = $nombre.val().trim();
-    formData.apellido = $apellido.val().trim();
-    formData.email = $email.val().trim();
+    data.email_contacto = $emailContacto.val().trim();
+    data.nombre = $nombre.val().trim();
+    data.apellido = $apellido.val().trim();
+    data.email = $email.val().trim();
 
     const telefonoArea = $telefonoArea.val().trim();
     const telefonoNumero = $telefonoNumero.val().trim();
 
-    formData.telefono = telefonoArea + telefonoNumero;
+    data.telefono = telefonoArea + telefonoNumero;
 
-    formData.cuit = $cuit.val().trim();
+    data.cuit = $cuit.val().trim();
 
     const nacimientoDia = $nacimientoDia.val();
     const nacimientoMes = $nacimientoMes.val();
     const nacimientoAnio = $nacimientoAnio.val();
 
-    //formData.nacimiento = `${nacimientoDia}-${nacimientoMes}-${nacimientoAnio}`;
-    formData.nacimiento = new Date(`${nacimientoAnio}-${nacimientoMes}-${nacimientoDia}`);
+    //data.nacimiento = `${nacimientoDia}-${nacimientoMes}-${nacimientoAnio}`;
+    data.nacimiento = new Date(`${nacimientoAnio}-${nacimientoMes}-${nacimientoDia}`);
 
-    formData.genero = genero;
-    formData.estado_civil = estado_civil;
+    data.genero = genero;
+    data.estado_civil = estado_civil;
 
-    formData.dom_pais = parseInt($domPais.val());
-    formData.nacionalidad = parseInt($nacionalidad.val());
+    data.dom_pais = parseInt($domPais.val());
+    data.nacionalidad = parseInt($nacionalidad.val());
 
-    if(formData.nombre === '') {
+    if(data.nombre === '') {
       $nombre.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
       //res = false;
     } else {
       $nombre.removeClass('form-invalid').next().text('');
     }
-    if(formData.apellido === '') {
+    if(data.apellido === '') {
       $apellido.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
       //res = false;
     } else {
       $apellido.removeClass('form-invalid').next().text('');
     }
-    if(formData.email === '') {
+    if(data.email === '') {
       $email.addClass('form-invalid').next().text('Obligatorio (*)').css( "color", "red");
       //res = false;
     } else {
@@ -847,18 +886,18 @@ $(function() {
 
     let res = true;
 
-    formData.domicilio = $domicilio.val().trim();
-    formData.dom_numero = $domNumero.val().trim();
-    formData.dom_piso = $domPiso.val().trim();
-    formData.dom_departamento = $domDepartamento.val().trim();
-    formData.dom_codigo_postal = $domCodigoPostal.val().trim();
-    formData.dom_provincia = parseInt($domProvincia.val());
-    formData.dom_localidad = $domLocalidad.val().trim();
-    formData.estadounidense = $estadounidense.is(':checked');
-    formData.residencia_fiscal_extranjera = $residenciaFiscalExtranjera.is(':checked');
-    formData.residencia_extranjera = parseInt($residenciaExtranjera.val());
-    formData.obligado_uif = $obligadoUif.is(':checked');
-    formData.politico = politico;
+    data.domicilio = $domicilio.val().trim();
+    data.dom_numero = $domNumero.val().trim();
+    data.dom_piso = $domPiso.val().trim();
+    data.dom_departamento = $domDepartamento.val().trim();
+    data.dom_codigo_postal = $domCodigoPostal.val().trim();
+    data.dom_provincia = parseInt($domProvincia.val());
+    data.dom_localidad = $domLocalidad.val().trim();
+    data.estadounidense = $estadounidense.is(':checked');
+    data.residencia_fiscal_extranjera = $residenciaFiscalExtranjera.is(':checked');
+    data.residencia_extranjera = parseInt($residenciaExtranjera.val());
+    data.obligado_uif = $obligadoUif.is(':checked');
+    data.politico = politico;
 
     return res;
   }
@@ -867,15 +906,15 @@ $(function() {
     
     let res = true;
 
-    formData.actividad_laboral = actividad_laboral;
+    data.actividad_laboral = actividad_laboral;
 
-    if(formData.actividad_laboral === '') {
-      formData.actividad_laboral = $actividadLaboralO.val().trim();
+    if(data.actividad_laboral === '') {
+      data.actividad_laboral = $actividadLaboralO.val().trim();
     }
 
-    formData.actividad_laboral_empresa = $actividadLaboralEmpresa.val().trim();
-    formData.actividad_laboral_principal = $actividadLaboralPrincipal.val().trim();
-    formData.iva = $iva.val().trim();
+    data.actividad_laboral_empresa = $actividadLaboralEmpresa.val().trim();
+    data.actividad_laboral_principal = $actividadLaboralPrincipal.val().trim();
+    data.iva = $iva.val().trim();
 
     return res;
   }
@@ -884,11 +923,11 @@ $(function() {
 
     let res = true;
 
-    formData.ingreso_promedio = parseInt($ingresoPromedio.val());
-    formData.patrimonio = $patrimonio.val().trim();
-    formData.porcentajeInversion = parseFloat($porcentajeInversion.val());
-    formData.procedenciaIngresos = $procedenciaIngresos.val().trim();
-    formData.tolerancia = $tolerancia.val();
+    data.ingreso_promedio = parseInt($ingresoPromedio.val());
+    data.patrimonio = $patrimonio.val().trim();
+    data.porcentajeInversion = parseFloat($porcentajeInversion.val());
+    data.procedenciaIngresos = $procedenciaIngresos.val().trim();
+    data.tolerancia = $tolerancia.val();
 
     return res;
   }
@@ -897,8 +936,8 @@ $(function() {
 
     let res = true;
 
-    formData.foto1 = $foto1[0].files[0];
-    formData.foto2 = $foto2[0].files[0];
+    data.foto1 = $foto1[0].files[0];
+    data.foto2 = $foto2[0].files[0];
 
     return res;
   }
@@ -907,7 +946,7 @@ $(function() {
 
     let res = true;
 
-    formData.archivo_1 = $archivo1[0].files[0];
+    data.archivo_1 = $archivo1[0].files[0];
 
     return res;
   }
@@ -916,10 +955,44 @@ $(function() {
 
     let res = true;
 
-    formData.archivo_3 = $archivo3[0].files[0];
-    formData.resumenBancario = $resumenBancario[0].files[0];
+    data.archivo_3 = $archivo3[0].files[0];
+    data.resumenBancario = $resumenBancario[0].files[0];
 
     return res;
+  }
+
+  function validate10() {
+
+    let res = true;
+
+    data.firma = undefined;
+
+    if(!signaturePad.isEmpty()) {
+      data.firma = signaturePad.toDataURL();
+    } 
+
+    return res;
+  }
+
+  function submit() {
+
+    for(const key in data) {
+      formData.append(key, data[key]);
+    }
+
+    $.ajax({
+      url: "submit.php",
+      method: "POST",
+      data: formData,
+      dataType: "html",
+      cache: false,
+      contentType: false,
+      processData: false
+    }).done(function(msg) {
+      console.log(JSON.parse(msg));
+    }).fail(function(jqXHR, textStatus) {
+      console.log(jqXHR, textStatus);
+    });
   }
 
   $porcentajeInversion.on('input', function () {
@@ -963,6 +1036,121 @@ $(function() {
    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
   }
+
+  const wrapper = document.getElementById("signature-pad");
+  const clearButton = wrapper.querySelector("[data-action=clear]");
+
+  //var savePNGButton = wrapper.querySelector("[data-action=save-png]");
+  //var saveJPGButton = wrapper.querySelector("[data-action=save-jpg]");
+  //var saveSVGButton = wrapper.querySelector("[data-action=save-svg]");
+  const canvas = wrapper.querySelector("canvas");
+  const signaturePad = new SignaturePad(canvas, {
+    // It's Necessary to use an opaque color when saving image as JPEG;
+    // this option can be omitted if only saving as PNG or SVG
+    backgroundColor: 'rgb(255, 255, 255)'
+  });
+
+  // Adjust canvas coordinate space taking into account pixel ratio,
+  // to make it look crisp on mobile devices.
+  // This also causes canvas to be cleared.
+  function resizeCanvas() {
+    // When zoomed out to less than 100%, for some very strange reason,
+    // some browsers report devicePixelRatio as less than 1
+    // and only part of the canvas is cleared then.
+    const ratio =  Math.max(window.devicePixelRatio || 1, 1);
+
+    // This part causes the canvas to be cleared
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext("2d").scale(ratio, ratio);
+
+    // This library does not listen for canvas changes, so after the canvas is automatically
+    // cleared by the browser, SignaturePad#isEmpty might still return false, even though the
+    // canvas looks empty, because the internal data of this library wasn't cleared. To make sure
+    // that the state of this library is consistent with visual state of the canvas, you
+    // have to clear it manually.
+    signaturePad.clear();
+  }
+
+  signaturePad.onBegin = function() {
+    $('.signature-pad--body h3').css('display', 'none');
+  };
+
+  // On mobile devices it might make more sense to listen to orientation change,
+  // rather than window resize events.
+  //window.onresize = resizeCanvas;
+  //resizeCanvas();
+
+  /*
+  function download(dataURL, filename) {
+    if (navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1) {
+      window.open(dataURL);
+    } else {
+      var blob = dataURLToBlob(dataURL);
+      var url = window.URL.createObjectURL(blob);
+
+      var a = document.createElement("a");
+      a.style = "display: none";
+      a.href = url;
+      a.download = filename;
+
+      document.body.appendChild(a);
+      a.click();
+
+      window.URL.revokeObjectURL(url);
+    }
+  }
+  */
+
+  // One could simply use Canvas#toBlob method instead, but it's just to show
+  // that it can be done using result of SignaturePad#toDataURL.
+  function dataURLToBlob(dataURL) {
+    // Code taken from https://github.com/ebidel/filer.js
+    var parts = dataURL.split(';base64,');
+    var contentType = parts[0].split(":")[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+  }
+
+  clearButton.addEventListener("click", function (event) {
+    signaturePad.clear();
+  });
+
+  /*
+  savePNGButton.addEventListener("click", function (event) {
+    if (signaturePad.isEmpty()) {
+      alert("Please provide a signature first.");
+    } else {
+      var dataURL = signaturePad.toDataURL();
+      download(dataURL, "signature.png");
+    }
+  });
+
+  saveJPGButton.addEventListener("click", function (event) {
+    if (signaturePad.isEmpty()) {
+      alert("Please provide a signature first.");
+    } else {
+      var dataURL = signaturePad.toDataURL("image/jpeg");
+      download(dataURL, "signature.jpg");
+    }
+  });
+
+  saveSVGButton.addEventListener("click", function (event) {
+    if (signaturePad.isEmpty()) {
+      alert("Please provide a signature first.");
+    } else {
+      var dataURL = signaturePad.toDataURL('image/svg+xml');
+      download(dataURL, "signature.svg");
+    }
+  });
+  */
 
 });
 </script>
