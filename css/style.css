@@ -497,6 +497,37 @@ input[type=checkbox], input[type=radio] {
   border: none;
   text-decoration: underline;
 }
+.button.clear:hover {
+  opacity: .5;
+}
+.slide10 .text-start {
+  padding-left: 4em;
+}
+.slide10 .text-start h5 {
+  font-size: 1.1rem;
+  line-height: 14px;
+}
+.slide10 .text-start a {
+  text-decoration: none;
+  font-family: 'BambinoHS-Heavy', Helvetica, Arial, sans-serif;
+  color: rgb(165, 164, 164);
+  font-size: .71rem;
+}
+.slide10 .text-start a:hover {
+  color: rgb(131, 131, 131);
+}
+
+.slide10 .text-start .form-check-input[type=checkbox] {
+  padding: 0;
+  width: .8em;
+  height: .8em;
+}
+
+.slide10 .text-start label {
+  font-size: .705rem;
+  margin-left: 1px;
+  margin-top: 3px;
+}
 
 /*#signature-pad canvas {position: absolute;left: 0;top: 0;width: 100%;height: 100%}*/
 
