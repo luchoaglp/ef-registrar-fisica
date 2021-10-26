@@ -551,6 +551,23 @@
           </div>
         </div>
       </div>
+      <div class="swiper-slide slide11">
+        <div class="container pb-3">
+          <div class="row">
+            <div class="col-md-6 offset-md-3 text-center">
+              <h1 class="pt-5 pb-0">¡FELICITACIONES!</h1>
+              <h3 class="pb-4">¡Tu cuenta está casi lista!</h3>
+              <p>Ahora veamos<br>qué tipo de inversor sos.</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <button type="button" class="btn btn-primary" id="btn11">
+            <img src="img/entry.png" alt="Test">
+            REALIZAR TEST DEL INVERSOR
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -575,6 +592,7 @@ $(function() {
   const $btn8 = $('#btn8');
   const $btn9 = $('#btn9');
   const $btn10 = $('#btn10');
+  const $btn11 = $('#btn11');
   
   const $emailContactoChk = $('#email_contacto_chk');
   const $emailContacto = $('#email_contacto');
@@ -837,8 +855,12 @@ $(function() {
   });
   $btn10.click(function() {
     if(validate10()) {
-      
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
+    console.log(data);
+  });
+  $btn11.click(function() {
     console.log(data);
     submit();
     alert(JSON.stringify(data));
