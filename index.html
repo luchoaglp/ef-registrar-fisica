@@ -393,7 +393,6 @@
           <button type="button" class="btn btn-primary" id="btn4">CONTINUAR</button>
         </div>
       </div>
-      
       <div class="swiper-slide slide5">
         <div class="container pb-4">
           <div class="row">
@@ -529,7 +528,6 @@
                   </div>
                 </div>
               </div>
-             
             </div>
           </div>
         </div>
@@ -568,6 +566,49 @@
           </button>
         </div>
       </div>
+      <div class="swiper-slide slide12">
+        <div class="container pb-5">
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <h1 class="pt-5 pb-1">TEST DEL INVERSOR</h1>
+              
+              <div class="row">
+                <div class="col-md-10 offset-md-1 mt-3">
+                  <div class="situacion_financiera-container">
+                    <div class="col-12 pb-2">
+                      <h2 class="text-center">OBJETIVOS DE INVERSIÓN</h2>
+                    </div>
+                    <div class="col-12 pb-2">
+                      <label for="opinionBolsa" class="form-label">¿TENÉS EXPERIENCIA EN INVERSIONES DENTRO DEL MERCADO DE CAPITALES?</label>
+                      <select id="opinionBolsa" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="1">Ninguna</option>
+                        <option value="2">Limitada</option>
+                        <option value="3">Buena</option>
+                        <option value="4">Excelente</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label for="experienciaInversion" class="form-label">¿CUÁL ES TU GRADO DE CONOCIMIENTO DE LOS INSTRUMENTOS<br>DISPONIBLES EN EL MERCADO DE CAPITALES?</label>
+                      <select id="experienciaInversion" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="Mucha">Mucha</option>
+                        <option value="Poca">Poca</option>
+                        <option value="Ninguna">Ninguna</option>
+                      </select>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid text-end">
+          <button type="button" class="btn btn-primary" id="btn12">FINALIZAR</button>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -593,6 +634,7 @@ $(function() {
   const $btn9 = $('#btn9');
   const $btn10 = $('#btn10');
   const $btn11 = $('#btn11');
+  const $btn12 = $('#btn12');
   
   const $emailContactoChk = $('#email_contacto_chk');
   const $emailContacto = $('#email_contacto');
@@ -669,6 +711,9 @@ $(function() {
   const $btnFile4 = $('#btn-file4');
   const $resumenBancario = $('#resumenBancario');
   const $btnFile5 = $('#btn-file5');
+
+  const $opinionBolsa = $('#opinionBolsa');
+  const $experienciaInversion = $('#experienciaInversion');
 
   let genero = '';
   let estado_civil = '';
@@ -861,11 +906,19 @@ $(function() {
     console.log(data);
   });
   $btn11.click(function() {
+    swiper.slideNext();
+    window.scrollTo(0, 0);
+    console.log(data);
+  });
+  $btn12.click(function() {
+    if(validate12()) {
+      swiper.slideNext();
+      window.scrollTo(0, 0);
+    }
     console.log(data);
     submit();
     alert(JSON.stringify(data));
   });
-
 
   function validate1() {
     
@@ -1007,6 +1060,16 @@ $(function() {
       data.firma = signaturePad.toDataURL();
     } 
 
+    return res;
+  }
+
+  function validate12() {
+
+    let res = true;
+
+    data.opinionBolsa = $opinionBolsa.val().trim();
+    data.experienciaInversion = $experienciaInversion.val().trim();
+    
     return res;
   }
 

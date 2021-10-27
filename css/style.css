@@ -127,7 +127,7 @@ p.detail {
 .form-invalid {
   box-shadow: 0 0 0 0.1rem rgb(255 0 0 / 80%);
 }
-#btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7, #btn8, #btn9, #btn10, #btn11 {
+#btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7, #btn8, #btn9, #btn10, #btn11, #btn12 {
   margin-right: 1.1em;
   border-radius: 0;
   border: none;
@@ -136,7 +136,7 @@ p.detail {
   background: rgb(186,192,204);
   background: linear-gradient(90deg, rgba(186,192,204,1) 0%, rgba(91,112,143,1) 30%, rgba(91,112,143,1) 75%, rgba(186,192,204,1) 100%);
 }
-#btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover, #btn5:hover, #btn6:hover, #btn7:hover, #btn8:hover, #btn9:hover, #btn10:hover, #btn11:hover {
+#btn1:hover, #btn2:hover, #btn3:hover, #btn4:hover, #btn5:hover, #btn6:hover, #btn7:hover, #btn8:hover, #btn9:hover, #btn10:hover, #btn11:hover, #btn12:hover {
   box-shadow: 0 0 0 0.2rem rgb(91 112 143 / 20%);
 }
 #telefono {
