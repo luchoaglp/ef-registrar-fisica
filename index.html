@@ -578,7 +578,7 @@
                     <div class="col-12 pb-2">
                       <h2 class="text-center">OBJETIVOS DE INVERSIÓN</h2>
                     </div>
-                    <div class="col-12 pb-2">
+                    <div class="col-12 pb-1">
                       <label for="opinionBolsa" class="form-label">¿TENÉS EXPERIENCIA EN INVERSIONES DENTRO DEL MERCADO DE CAPITALES?</label>
                       <select id="opinionBolsa" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
@@ -588,13 +588,25 @@
                         <option value="4">Excelente</option>
                       </select>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 pb-1">
                       <label for="experienciaInversion" class="form-label">¿CUÁL ES TU GRADO DE CONOCIMIENTO DE LOS INSTRUMENTOS<br>DISPONIBLES EN EL MERCADO DE CAPITALES?</label>
                       <select id="experienciaInversion" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="Mucha">Mucha</option>
                         <option value="Poca">Poca</option>
                         <option value="Ninguna">Ninguna</option>
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <label for="tipoInversion" class="form-label">¿QUÉ TIPO DE OPERACIONES PENSÁS REALIZAR?</label>
+                      <select id="tipoInversion" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="FondoComun">Fondo Común</option>
+                        <option value="Moneda">Moneda</option>
+                        <option value="Derivados">Derivados</option>
+                        <option value="RentaVariable">Renta Variable</option>
+                        <option value="RentaFija">Renta Fija</option>
+                        <option value="Otros">Otros</option>
                       </select>
                     </div>
                     
@@ -608,7 +620,7 @@
           <button type="button" class="btn btn-primary" id="btn12">FINALIZAR</button>
         </div>
       </div>
-
+      
     </div>
   </div>
 
@@ -714,6 +726,7 @@ $(function() {
 
   const $opinionBolsa = $('#opinionBolsa');
   const $experienciaInversion = $('#experienciaInversion');
+  const $tipoInversion = $('#tipoInversion');
 
   let genero = '';
   let estado_civil = '';
@@ -1069,6 +1082,7 @@ $(function() {
 
     data.opinionBolsa = $opinionBolsa.val().trim();
     data.experienciaInversion = $experienciaInversion.val().trim();
+    data.tipoInversion = $tipoInversion.val().trim();
     
     return res;
   }
