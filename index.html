@@ -8,6 +8,7 @@
   <title>Estructuras Financieras - Registrar Física</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/swiper@7/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -571,7 +572,6 @@
           <div class="row">
             <div class="col-md-6 offset-md-3">
               <h1 class="pt-5 pb-1">TEST DEL INVERSOR</h1>
-              
               <div class="row">
                 <div class="col-md-10 offset-md-1 mt-3">
                   <div class="situacion_financiera-container">
@@ -597,7 +597,7 @@
                         <option value="Ninguna">Ninguna</option>
                       </select>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 pb-1">
                       <label for="tipoInversion" class="form-label">¿QUÉ TIPO DE OPERACIONES PENSÁS REALIZAR?</label>
                       <select id="tipoInversion" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
@@ -609,7 +609,48 @@
                         <option value="Otros">Otros</option>
                       </select>
                     </div>
-                    
+                    <div class="col-12 pb-1">
+                      <label for="tiempoInversion" class="form-label">¿CUÁL ES EL HORIZONTE DE TIEMPO DE TUS INVERSIONES?</label>
+                      <select id="tiempoInversion" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="Largo">Largo Plazo (más de 5 años)</option>
+                        <option value="Mediano">Mediano Plazo (más de 1 año, menos de 5 años)</option>
+                        <option value="Corto">Corto Plazo (1 año)</option>
+                      </select>
+                    </div>
+                    <div class="col-12 pb-1">
+                      <div id="tipoVolatilidad-container">
+                        <label for="tipoVolatilidad" class="form-label">¿CUÁL ES EL GRADO DE VOLATILIDAD QUE ESTÁS DISPUESTO A ACEPTAR?</label>
+                        <select id="tipoVolatilidad" class="form-select">
+                          <option value="" hidden selected>Seleccionar</option>
+                          <option value="Alta">Alta</option>
+                          <option value="Media">Media</option>
+                          <option value="Baja">Baja</option>
+                        </select>
+                        <a href="#" id="tipoVolatilidad-info" class="info">?</a>
+                      </div>
+                    </div>
+                    <div class="col-12 pb-1">
+                      <div id="importanciaLiquidez-container">
+                        <label for="importanciaLiquidez" class="form-label">¿QUÉ TAN IMPORTANTE ES LA LIQUIDEZ PARA VOS?</label>
+                        <select id="importanciaLiquidez" class="form-select">
+                          <option value="" hidden selected>Seleccionar</option>
+                          <option value="Poco">Poco Importante</option>
+                          <option value="Algo">Algo Importante</option>
+                          <option value="Mucho">Muy Importante</option>
+                        </select>
+                        <a href="#" id="importanciaLiquidez-info" class="info">?</a>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <label for="rangoInversion" class="form-label">¿CUÁL ES EL MONTO QUE VAS A INVERTIR?</label>
+                      <select id="rangoInversion" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="Bajo">Más de 1 millón</option>
+                        <option value="Medio">Entre 500 mil y 1 millón</option>
+                        <option value="Alto">Hasta 500 mil</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -629,6 +670,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script>
 $(function() {
 
@@ -727,6 +769,13 @@ $(function() {
   const $opinionBolsa = $('#opinionBolsa');
   const $experienciaInversion = $('#experienciaInversion');
   const $tipoInversion = $('#tipoInversion');
+  const $tiempoInversion = $('#tiempoInversion');
+  const $tipoVolatilidad = $('#tipoVolatilidad');
+  const $importanciaLiquidez = $('#importanciaLiquidez');
+  const $rangoInversion = $('#rangoInversion');
+
+  const $tipoVolatilidadInfo = $('#tipoVolatilidad-info');
+  const $importanciaLiquidezInfo = $('#importanciaLiquidez-info');
 
   let genero = '';
   let estado_civil = '';
@@ -1080,9 +1129,13 @@ $(function() {
 
     let res = true;
 
-    data.opinionBolsa = $opinionBolsa.val().trim();
-    data.experienciaInversion = $experienciaInversion.val().trim();
-    data.tipoInversion = $tipoInversion.val().trim();
+    data.opinionBolsa = $opinionBolsa.val();
+    data.experienciaInversion = $experienciaInversion.val();
+    data.tipoInversion = $tipoInversion.val();
+    data.tiempoInversion = $tiempoInversion.val();
+    data.tipoVolatilidad = $tipoVolatilidad.val();
+    data.importanciaLiquidez = $importanciaLiquidez.val();
+    data.rangoInversion = $rangoInversion.val();
     
     return res;
   }
@@ -1149,6 +1202,24 @@ $(function() {
    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
    return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
   }
+
+  $tipoVolatilidadInfo.click(function() {
+    $.alert({
+      title: false,
+      content: 'La volatilidad generalmente refiere al grado y frecuencia de cambios en el valor de sus inversiones. La volatilidad está claramente asociada al concepto de riesgo. La baja volatilidad generalmente ofrece retornos bajos pero más predecibles. Las inversiones altas en volatilidad son más riesgosas, pero pueden ofrecer mayores restornos.',
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  $importanciaLiquidezInfo.click(function() {
+    $.alert({
+      title: false,
+      content: 'La liquidez generalmente se refiere a la posibilidad de convertir activos en efectivo rápidamente, sin una pérdida significativa del capital causada por el acto de vender. Los esfuerzos por vender activos ilíquidos puede ser el resultado de una variedad de consecuencias, incluyendo la ausencia de compradores interesados, no pueden ser vendidos salvo en tiempos predeterminados, vender puede llevar tiempo (posiblemente semanas o meses) o finalizar en una pérdida del capital creada en el acto de vender.',
+      closeIcon: true,
+      buttons: false
+    });
+  });
 
   const wrapper = document.getElementById("signature-pad");
   const clearButton = wrapper.querySelector("[data-action=clear]");
