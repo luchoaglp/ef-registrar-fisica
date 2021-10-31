@@ -462,7 +462,7 @@
           <div class="row">
             <h3 class="mt-5 pt-5 pb-4">
               Justificación de origen de los fondos
-              <a href="#" class="info ms-2">?</a>
+              <a href="#" id="archivo_1-info" class="info ms-2">?</a>
             </h3>
             <div class="col-md-6 offset-md-3 text-center">
               <div class="col-md-4 offset-md-4 text-center">
@@ -496,7 +496,7 @@
               <div class="col-md-8">
                 <h3 class="mt-5 pt-5 pb-2">
                   Comprobante de CBU
-                  <a href="#" class="info">?</a>
+                  <a href="#" id="resumenBancario-info" class="info">?</a>
                 </h3>
                 <div class="upload-btn-wrapper mb-2">
                   <button id="btn-file5" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
@@ -560,10 +560,10 @@
             </div>
           </div>
         </div>
-        <div class="container-fluid">
-          <button type="button" class="btn btn-primary" id="btn11">
+        <div class="container-fluid text-center">
+          <button type="button" class="btn btn-primary me-0" id="btn11">
             <img src="img/entry.png" alt="Test">
-            REALIZAR TEST DEL INVERSOR
+            REALIZAR TEST DEL INVERSOR &nbsp;
           </button>
         </div>
       </div>
@@ -765,6 +765,9 @@ $(function() {
   const $btnFile4 = $('#btn-file4');
   const $resumenBancario = $('#resumenBancario');
   const $btnFile5 = $('#btn-file5');
+
+  const $archivo1Info = $('#archivo_1-info');
+  const $resumenBancarioInfo = $('#resumenBancario-info');
 
   const $opinionBolsa = $('#opinionBolsa');
   const $experienciaInversion = $('#experienciaInversion');
@@ -1206,7 +1209,7 @@ $(function() {
   $tipoVolatilidadInfo.click(function() {
     $.alert({
       title: false,
-      content: 'La volatilidad generalmente refiere al grado y frecuencia de cambios en el valor de sus inversiones. La volatilidad está claramente asociada al concepto de riesgo. La baja volatilidad generalmente ofrece retornos bajos pero más predecibles. Las inversiones altas en volatilidad son más riesgosas, pero pueden ofrecer mayores restornos.',
+      content: 'La volatilidad generalmente refiere al grado y frecuencia de cambios en el valor de sus inversiones. La volatilidad está claramente asociada al concepto de riesgo. La baja volatilidad generalmente ofrece retornos bajos pero más predecibles. Las inversiones altas en volatilidad son más riesgosas, pero pueden ofrecer mayores retornos.',
       closeIcon: true,
       buttons: false
     });
@@ -1216,6 +1219,24 @@ $(function() {
     $.alert({
       title: false,
       content: 'La liquidez generalmente se refiere a la posibilidad de convertir activos en efectivo rápidamente, sin una pérdida significativa del capital causada por el acto de vender. Los esfuerzos por vender activos ilíquidos puede ser el resultado de una variedad de consecuencias, incluyendo la ausencia de compradores interesados, no pueden ser vendidos salvo en tiempos predeterminados, vender puede llevar tiempo (posiblemente semanas o meses) o finalizar en una pérdida del capital creada en el acto de vender.',
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  $archivo1Info.click(function() {
+    $.alert({
+      title: false,
+      content: 'Justificación de origen de fondos: Comprobante del último pago del monotributo, recibo de sueldo o Declaración de ganancias.',
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  $resumenBancarioInfo.click(function() {
+    $.alert({
+      title: false,
+      content: 'Foto o captura de pantalla',
       closeIcon: true,
       buttons: false
     });
