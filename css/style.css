@@ -58,7 +58,7 @@ img.logo {
   font-size: 1.65rem;
   margin: auto;
   margin-bottom: 1em;
-  max-width: 16.86em;
+  /*max-width: 16.86em;*/
   padding: 1rem 0 .5rem 0;
   color: #fff;
   background: rgb(186,192,204);
@@ -565,13 +565,29 @@ input[type=checkbox], input[type=radio] {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
 
+  img.logo {
+    left: 2em;
+    top: 1.9em;
+    width: 17%;
+  }
+
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-
+  img.logo {
+    left: 2em;
+    top: 1.9em;
+    width: 17%;
+  }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
+  img.logo {
+    left: 2em;
+    top: 1.9em;
+    width: 14%;
+  }
 
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
