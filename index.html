@@ -44,7 +44,7 @@
               </div>
               <div class="row">
                 <div class="col-md-10 offset-md-1">
-                <h2>DATOS PERSONALES</h2>
+                  <h2>DATOS PERSONALES</h2>
                 </div>
               </div>
             </div>
@@ -188,7 +188,7 @@
               <h1 class="pt-5 pb-3">APERTURA DE CUENTA</h1>
               <div class="row">
                 <div class="col-md-10 offset-md-1">
-                <h2>VERIFICACIÓN DE DOMICILIO</h2>
+                  <h2>VERIFICACIÓN DE DOMICILIO</h2>
                 </div>
               </div>
               <div class="row">
@@ -304,7 +304,7 @@
               <p class="detail-laboral px-5 pb-2">¡Muy bien! Vas perfecto, necesitamos<br>saber algunos datos<br>sobre tu actividad laboral.</p>
               <div class="row">
                 <div class="col-md-10 offset-md-1">
-                <h2>DATOS LABORALES</h2>
+                  <h2>DATOS LABORALES</h2>
                 </div>
               </div>
               <div class="row">
@@ -363,7 +363,7 @@
               <h1 class="pt-5 pb-3">APERTURA DE CUENTA</h1>
               <div class="row">
                 <div class="col-md-10 offset-md-1">
-                <h2>NORMATIVAS Y SITUACIÓN FINANACIERA</h2>
+                  <h2>NORMATIVAS Y SITUACIÓN FINANACIERA</h2>
                 </div>
               </div>
               <div class="row">
@@ -418,7 +418,7 @@
               <h3>FINALIZAR APERTURA DE CUENTA</h3>
               <div class="row">
                 <div class="col-md-10 offset-md-1">
-                <h2>VERIFICACION DE IDENTIDAD</h2>
+                  <h2>VERIFICACION DE IDENTIDAD</h2>
                 </div>
               </div>
               <p>Luego de verificar tu identidad, deberás realizar una transferencia a alguna de<br>nuestras cuentas bancarias para activar tu cuenta comitente y comenzar a invertir.</p>
@@ -469,12 +469,10 @@
                   <h2><span>SUBIR PARTE</span> DELANTERA</h2>
                 </div>
               </div>
-              <!--<h2 class="mb-4"><span>SUBIR PARTE</span> DELANTERA</h2>-->
               <div class="upload-btn-wrapper my-2">
                 <button id="btn-file2" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
                 <input type="file" id="foto2" accept=".png, .jpg, .jpeg, .pdf">
               </div>
-              <!--<h2><span>SUBIR PARTE</span> TRASERA</h2>-->
               <div class="row">
                 <div class="col-md-10 offset-md-1">
                   <h2><span>SUBIR PARTE</span> TRASERA</h2>
@@ -547,8 +545,8 @@
             <h3 class="mt-5 pt-5 pb-4">FIRMA DIGITAL</h3>
             <div class="col-md-6 offset-md-3 text-center">
               <div id="signature-pad" class="signature-pad">
+                <h3 id="signature-pad--h3">REALIZAR FIRMA<br>CON EL MOUSE</h3>
                 <div class="signature-pad--body">
-                  <h3 id="signature-pad--h3">RELIZAR FIRMA<br>CON EL MOUSE</h3>
                   <canvas style="touch-action: none;" width="360" height="180"></canvas>
                 </div>
                 <div class="signature-pad--footer">
@@ -1312,7 +1310,7 @@ $(function() {
   });
   
   signaturePad.onBegin = function() {
-    $('.signature-pad--body h3').hide();
+    $('.signature-pad h3').hide();
   };
   
 
