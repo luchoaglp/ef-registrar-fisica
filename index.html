@@ -36,8 +36,9 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-10 ps-0">
+                    <div class="col-10 ps-0 mb-3">
                       <input type="email" id="email_contacto" class="form-control" placeholder="e-mail del contacto">
+                      <div class="form-control-info"></div>
                     </div>
                   </div>
                 </div>
@@ -64,7 +65,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                   <label for="email" class="form-label">e-mail<small>*</small></label>
                   <input type="email" id="email" class="form-control">
                   <div class="form-control-info"></div>
@@ -87,7 +88,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6 mb-2">
+                <div class="col-md-6 mb-3">
                   <label for="cuit" class="form-label">Cuit / Cuil / CDI<small>*</small></label>
                   <input type="text" id="cuit" class="form-control">
                   <div class="form-control-info"></div>
@@ -139,7 +140,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label">País de residencia / Nacionalidad</label>
+                  <label class="form-label">País de residencia / Nacionalidad<small>*</small></label>
                   <div class="row">
                     <div class="col-6">
                       <select id="dom_pais" class="form-select">
@@ -174,14 +175,16 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-10 offset-md-1">
-                  <label for="domicilio" class="form-label">Domicilio</label>
+                <div class="col-md-10 offset-md-1 mb-3">
+                  <label for="domicilio" class="form-label">Domicilio<small>*</small></label>
                   <input type="text" id="domicilio" class="form-control">
+                  <div class="form-control-info"></div>
                 </div>
-                <div class="col-md-10 offset-md-1">
+                <div class="col-md-10 offset-md-1 mb-3">
                   <div class="row">
                     <div class="col-4">
-                      <input type="text" id="dom_numero" class="form-control" placeholder="Nro.">
+                      <input type="text" id="dom_numero" class="form-control" placeholder="Nro.*">
+                      <div class="form-control-info"></div>
                     </div>
                     <div class="col-4">
                       <input type="text" id="dom_piso" class="form-control" placeholder="Piso">
@@ -1030,6 +1033,20 @@ $(function() {
     data.dom_pais = parseInt($domPais.val());
     data.nacionalidad = parseInt($nacionalidad.val());
 
+    if($emailContactoChk.val() === 'on') {
+      if(data.email_contacto === '') {
+        $emailContacto.addClass('form-invalid').next().text('Obligatorio').css( "color", "red");
+        res = false;
+      } else if(!validateEmail(data.email_contacto)) {
+        $emailContacto.addClass('form-invalid').next().text('Email inválido').css("color", "red");
+        res = false;
+      } else {
+        $emailContacto.removeClass('form-invalid').next().text('');
+      }
+    } else {
+      $emailContacto.removeClass('form-invalid').next().text('');
+    }
+
     if(data.nombre.length < 1) {
       $nombre.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
       res = false;
@@ -1136,6 +1153,19 @@ $(function() {
     data.residencia_extranjera = parseInt($residenciaExtranjera.val());
     data.obligado_uif = $obligadoUif.is(':checked');
     data.politico = politico;
+
+    if(data.domicilio.length < 1) {
+      $domicilio.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $domicilio.removeClass('form-invalid').next().text('');
+    }
+    if(data.dom_numero.length < 1) {
+      $domNumero.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $domNumero.removeClass('form-invalid').next().text('');
+    }
 
     return res;
   }

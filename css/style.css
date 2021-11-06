@@ -555,9 +555,13 @@ small {
 #tipoVolatilidad-info, #importanciaLiquidez-info {
   position: absolute;
   font-size: 1.4rem;
-  top: .85em;
-  right: -1.95em;
   padding: 1px 11px;
+  top: .85em;
+  right: .15em;
+}
+
+#tipoVolatilidad-container select, #importanciaLiquidez-container select {
+  width: 87%;
 }
 
 .jconfirm-box {
@@ -616,14 +620,17 @@ small {
   #btn1, #btn2, #btn3, #btn4, #btn5, #btn6, #btn7, #btn8, #btn9, #btn10, #btn11, #btn12 {
     margin-right: 1.1em;
   }
-/*
-  .signature-pad--body h3 {
-    left: 5.45em;
-    top: 1.95em;
-  }
-*/
+
   .slide10 .text-start {
     padding-left: 4em;
+  }
+
+  #tipoVolatilidad-info, #importanciaLiquidez-info {
+    right: -1.95em;
+  }
+
+  #tipoVolatilidad-container select, #importanciaLiquidez-container select {
+    width: 100%;
   }
   
 }
