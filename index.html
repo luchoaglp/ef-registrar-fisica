@@ -193,15 +193,17 @@
                       <input type="text" id="dom_departamento" class="form-control" placeholder="Dpto.">
                     </div>
                     <div class="col-4">
-                      <input type="text" id="dom_codigo_postal" class="form-control" placeholder="CP.">
+                      <input type="text" id="dom_codigo_postal" class="form-control" placeholder="CP.*">
+                      <div class="form-control-info"></div>
                     </div>
                     <div class="col-4">
                       <select id="dom_provincia" class="form-select">
-                        <option value="" hidden selected>Pcia.</option><option value="1" data-pais="13">Buenos Aires</option><option value="2" data-pais="13">CABA</option><option value="3" data-pais="13">Catamarca</option><option value="4" data-pais="13">Chaco</option><option value="5" data-pais="13">Chubut</option><option value="6" data-pais="13">Córdoba</option><option value="7" data-pais="13">Corrientes</option><option value="8" data-pais="13">Entre Ríos</option><option value="9" data-pais="13">Formosa</option><option value="10" data-pais="13">Jujuy</option><option value="11" data-pais="13">La Pampa</option><option value="12" data-pais="13">La Rioja</option><option value="13" data-pais="13">Mendoza</option><option value="14" data-pais="13">Misiones</option><option value="15" data-pais="13">Neuquén</option><option value="16" data-pais="13">Río Negro</option><option value="17" data-pais="13">Salta</option><option value="18" data-pais="13">San Juan</option><option value="19" data-pais="13">San Luis</option><option value="20" data-pais="13">Santa Cruz</option><option value="21" data-pais="13">Santa Fe</option><option value="22" data-pais="13">Santiago del Estero</option><option value="23" data-pais="13">Tierra del Fuego</option><option value="24" data-pais="13">Tucumán</option>             
+                        <option value="" hidden selected>Pcia.</option><option value="1" data-pais="13">Buenos Aires</option><option value="2" data-pais="13">CABA</option><option value="3" data-pais="13">Catamarca</option><option value="4" data-pais="13">Chaco</option><option value="5" data-pais="13">Chubut</option><option value="6" data-pais="13">Córdoba</option><option value="7" data-pais="13">Corrientes</option><option value="8" data-pais="13">Entre Ríos</option><option value="9" data-pais="13">Formosa</option><option value="10" data-pais="13">Jujuy</option><option value="11" data-pais="13">La Pampa</option><option value="12" data-pais="13">La Rioja</option><option value="13" data-pais="13">Mendoza</option><option value="14" data-pais="13">Misiones</option><option value="15" data-pais="13">Neuquén</option><option value="16" data-pais="13">Río Negro</option><option value="17" data-pais="13">Salta</option><option value="18" data-pais="13">San Juan</option><option value="19" data-pais="13">San Luis</option><option value="20" data-pais="13">Santa Cruz</option><option value="21" data-pais="13">Santa Fe</option><option value="22" data-pais="13">Santiago del Estero</option><option value="23" data-pais="13">Tierra del Fuego</option><option value="24" data-pais="13">Tucumán</option>
                       </select>
                     </div>
                     <div class="col-4">
-                      <input type="text" id="dom_localidad" class="form-control" placeholder="Localidad">
+                      <input type="text" id="dom_localidad" class="form-control" placeholder="Localidad*">
+                      <div class="form-control-info"></div>
                     </div>
                     <div class="col-12 text-start mb-2">
                       <div class="form-check">
@@ -1165,6 +1167,26 @@ $(function() {
       res = false;
     } else {
       $domNumero.removeClass('form-invalid').next().text('');
+    }
+    if(data.dom_codigo_postal.length < 4) {
+      $domCodigoPostal.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $domCodigoPostal.removeClass('form-invalid').next().text('');
+    }
+    if(data.dom_localidad.length < 1) {
+      $domLocalidad.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $domLocalidad.removeClass('form-invalid').next().text('');
+    }
+    if(data.politico === '') {
+      $politicoNo.addClass('form-invalid');
+      $politicoSi.addClass('form-invalid');
+      res = false;
+    } else {
+      $politicoNo.removeClass('form-invalid');
+      $politicoSi.removeClass('form-invalid');
     }
 
     return res;
