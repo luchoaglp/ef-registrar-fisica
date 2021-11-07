@@ -219,9 +219,12 @@ p.detail-laboral {
 .actividad_laboral-container label, .situacion_financiera-container label {
   font-size: .6rem;
 }
-.actividad_laboral-container input[type=text], .situacion_financiera-container input[type=text], .situacion_financiera-container select {
+.actividad_laboral-container input[type=text], .actividad_laboral-container select, .situacion_financiera-container input[type=text], .situacion_financiera-container select {
   margin-top: -6px;
   margin-bottom: 10px;
+}
+.actividad_laboral-container .form-control-info {
+  margin-top: -8px;
 }
 
 input[type="range"] {

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-  <img src="img/logo.png" class="logo">
+  <img src="img/logo.png" class="logo" alt="Estructuras Financieras">
 
   <div id="swiper" class="swiper">
     <div class="swiper-wrapper">
@@ -305,19 +305,35 @@
                   </div>
                   <div class="col-12 mb-4">
                     <input type="text" id="actividad_laboral-o" class="form-control" placeholder="OTRA.....................................................................................................................................">
+                    <div class="form-control-info"></div>
                   </div>
                   <div class="actividad_laboral-container">
-                    <div class="col-12">
+                    <div class="col-12 mb-3">
                       <label for="actividad_laboral_empresa" class="form-label">NOMBRE DE LA EMPRESA O TITULAR</label>
                       <input type="text" id="actividad_laboral_empresa" class="form-control">
+                      <div class="form-control-info text-center"></div>
                     </div>
-                    <div class="col-12">
-                      <label for="actividad_laboral_principal" class="form-label">ACTIVIDAD PRINCIPAL</label>
+                    <div class="col-12 mb-3">
+                      <label for="actividad_laboral_principal" class="form-label">ACTIVIDAD PRINCIPAL<small>*</small></label>
                       <input type="text" id="actividad_laboral_principal" class="form-control">
+                      <div class="form-control-info text-center"></div>
                     </div>
                     <div class="col-12">
-                      <label for="iva" class="form-label">RESPONSABILIDAD IMPOSITIVA (IVA – GCIAS)</label>
+                      <!--
+                      <label for="iva" class="form-label">RESPONSABILIDAD IMPOSITIVA (IVA – GCIAS)<small>*</small></label>
                       <input type="text" id="iva" class="form-control">
+                      -->
+                      <label for="iva" class="form-label">RESPONSABILIDAD IMPOSITIVA (IVA – GCIAS)<small>*</small></label>
+                      <select id="iva" class="form-select">
+                        <option value="" hidden selected>Seleccionar</option>
+                        <option value="1">IVA Responsable Inscripto</option>
+                        <option value="2">IVA No Responsable</option>
+                        <option value="3">IVA Exento</option>
+                        <option value="4">Responsable Monotributo</option>
+                        <option value="5">Monotributista Social</option>
+                        <option value="6">Consumidor Final</option>
+                      </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
                   </div>
                 </div>
@@ -1197,14 +1213,48 @@ $(function() {
     let res = true;
 
     data.actividad_laboral = actividad_laboral;
+    data.actividad_laboral_empresa = $actividadLaboralEmpresa.val().trim();
+    data.actividad_laboral_principal = $actividadLaboralPrincipal.val().trim();
+    data.iva = parseInt($iva.val());
 
     if(data.actividad_laboral === '') {
       data.actividad_laboral = $actividadLaboralO.val().trim();
+      if(data.actividad_laboral === '') {
+        $actividadLaboralO.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+        $actividadLaboralBtns.each(function() {
+          $(this).find('button').addClass('form-invalid');
+        });
+        res = false;
+      } else {
+        $actividadLaboralO.removeClass('form-invalid').next().text('').css("color", "red");
+        $actividadLaboralBtns.each(function() {
+          $(this).find('button').removeClass('form-invalid');
+        });
+      }
+    } else {
+      $actividadLaboralO.removeClass('form-invalid').next().text('').css("color", "red");
+      $actividadLaboralBtns.each(function() {
+        $(this).find('button').removeClass('form-invalid');
+      });
     }
-
-    data.actividad_laboral_empresa = $actividadLaboralEmpresa.val().trim();
-    data.actividad_laboral_principal = $actividadLaboralPrincipal.val().trim();
-    data.iva = $iva.val().trim();
+    if(data.actividad_laboral_empresa.length < 1) {
+      $actividadLaboralEmpresa.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $actividadLaboralEmpresa.removeClass('form-invalid').next().text('');
+    }
+    if(data.actividad_laboral_principal.length < 1) {
+      $actividadLaboralPrincipal.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $actividadLaboralPrincipal.removeClass('form-invalid').next().text('');
+    }
+    if(isNaN(data.iva)) {
+      $iva.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $iva.removeClass('form-invalid').next().text('');
+    }
 
     return res;
   }
