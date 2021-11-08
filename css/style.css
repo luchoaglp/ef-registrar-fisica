@@ -223,8 +223,9 @@ p.detail-laboral {
   margin-top: -6px;
   margin-bottom: 10px;
 }
-.actividad_laboral-container .form-control-info {
+.actividad_laboral-container .form-control-info, .situacion_financiera-container .form-control-info {
   margin-top: -8px;
+  margin-bottom: -10px;
 }
 
 input[type="range"] {

@@ -319,10 +319,6 @@
                       <div class="form-control-info text-center"></div>
                     </div>
                     <div class="col-12">
-                      <!--
-                      <label for="iva" class="form-label">RESPONSABILIDAD IMPOSITIVA (IVA – GCIAS)<small>*</small></label>
-                      <input type="text" id="iva" class="form-control">
-                      -->
                       <label for="iva" class="form-label">RESPONSABILIDAD IMPOSITIVA (IVA – GCIAS)<small>*</small></label>
                       <select id="iva" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
@@ -358,27 +354,30 @@
               <div class="row">
                 <div class="col-md-10 offset-md-1 mt-3">
                   <div class="situacion_financiera-container">
-                    <div class="col-12">
-                      <label for="ingreso_promedio" class="form-label">INGRESO ANUAL PROMEDIO</label>
+                    <div class="col-12 mb-4">
+                      <label for="ingreso_promedio" class="form-label">INGRESO ANUAL PROMEDIO*</label>
                       <select id="ingreso_promedio" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="1">Menos de ARS 500.000</option>
                         <option value="2">Entre ARS 500.000 y ARS 1.000.000</option>
                         <option value="3">Más de ARS 1.000.000</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
-                    <div class="col-12">
-                      <label for="patrimonio" class="form-label">PATRIMONIO NETO</label>
+                    <div class="col-12 mb-4">
+                      <label for="patrimonio" class="form-label">PATRIMONIO NETO*</label>
                       <input type="text" id="patrimonio" class="form-control">
+                      <div class="form-control-info text-center"></div>
                     </div>
                     <div class="col-12 pb-2">
                       <label for="porcentajeInversion" class="form-label">PORCENTAJE DEL PATRIMONIO NETO DESTINADO A INVERSIONES</label>
                       <input type="range" step="5" min="0" max="100" id="porcentajeInversion" value="20">
                       <div class="porcentajeInversion-percentage text-end">&nbsp;20%</div>
                     </div>
-                    <div class="col-12">
-                      <label for="procedenciaIngresos" class="form-label">PROCEDENCIA DE LOS INGRESOS</label>
+                    <div class="col-12 mb-4">
+                      <label for="procedenciaIngresos" class="form-label">PROCEDENCIA DE LOS INGRESOS*</label>
                       <input type="text" id="procedenciaIngresos" class="form-control">
+                      <div class="form-control-info text-center"></div>
                     </div>
                     <div class="col-12">
                       <label for="tolerancia" class="form-label">¿CUÁL ES TU PERFIL DE RIESGO?</label>
@@ -388,6 +387,7 @@
                         <option value="Moderado">Moderado</option>
                         <option value="Arriesgado">Arriesgado</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
                   </div>
                 </div>
@@ -1268,6 +1268,31 @@ $(function() {
     data.porcentajeInversion = parseFloat($porcentajeInversion.val());
     data.procedenciaIngresos = $procedenciaIngresos.val().trim();
     data.tolerancia = $tolerancia.val();
+
+    if(isNaN(data.ingreso_promedio)) {
+      $ingresoPromedio.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $ingresoPromedio.removeClass('form-invalid').next().text('');
+    }
+    if(data.patrimonio.length < 1) {
+      $patrimonio.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $patrimonio.removeClass('form-invalid').next().text('');
+    }
+    if(data.procedenciaIngresos.length < 1) {
+      $procedenciaIngresos.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $procedenciaIngresos.removeClass('form-invalid').next().text('');
+    }
+    if(data.tolerancia === '') {
+      $tolerancia.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $tolerancia.removeClass('form-invalid').next().text('');
+    }
 
     return res;
   }
