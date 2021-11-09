@@ -1326,6 +1326,13 @@ $(function() {
 
     data.archivo_1 = $archivo1[0].files[0];
 
+    if(data.archivo_1 === undefined) {
+      $btnFile3.css("border-color", "#ef807f");
+      res = false;
+    } else {
+      $btnFile3.css("border-color", "#7987a4");
+    }
+
     return res;
   }
 
