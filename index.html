@@ -1304,6 +1304,19 @@ $(function() {
     data.foto1 = $foto1[0].files[0];
     data.foto2 = $foto2[0].files[0];
 
+    if(data.foto1 === undefined) {
+      $btnFile1.css("border-color", "#ef807f");
+      res = false;
+    } else {
+      $btnFile1.css("border-color", "#7987a4");
+    }
+    if(data.foto2 === undefined) {
+      $btnFile2.css("border-color", "#ef807f");
+      res = false;
+    } else {
+      $btnFile2.css("border-color", "#7987a4");
+    }
+
     return res;
   }
 
