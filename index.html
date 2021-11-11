@@ -1343,6 +1343,19 @@ $(function() {
     data.archivo_3 = $archivo3[0].files[0];
     data.resumenBancario = $resumenBancario[0].files[0];
 
+    if(data.archivo_3 === undefined) {
+      $btnFile4.css("border-color", "#ef807f");
+      res = false;
+    } else {
+      $btnFile4.css("border-color", "#7987a4");
+    }
+    if(data.resumenBancario === undefined) {
+      $btnFile5.css("border-color", "#ef807f");
+      res = false;
+    } else {
+      $btnFile5.css("border-color", "#7987a4");
+    }
+
     return res;
   }
 
