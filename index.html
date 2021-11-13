@@ -595,8 +595,8 @@
                     <div class="col-12 pb-2">
                       <h2 class="text-center">OBJETIVOS DE INVERSIÓN</h2>
                     </div>
-                    <div class="col-12 pb-1">
-                      <label for="opinionBolsa" class="form-label">¿TENÉS EXPERIENCIA EN INVERSIONES DENTRO DEL MERCADO DE CAPITALES?</label>
+                    <div class="col-12 mb-3">
+                      <label for="opinionBolsa" class="form-label">¿TENÉS EXPERIENCIA EN INVERSIONES DENTRO DEL MERCADO DE CAPITALES?<small>*</small></label>
                       <select id="opinionBolsa" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="1">Ninguna</option>
@@ -604,18 +604,20 @@
                         <option value="3">Buena</option>
                         <option value="4">Excelente</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
-                    <div class="col-12 pb-1">
-                      <label for="experienciaInversion" class="form-label">¿CUÁL ES TU GRADO DE CONOCIMIENTO DE LOS INSTRUMENTOS<br>DISPONIBLES EN EL MERCADO DE CAPITALES?</label>
+                    <div class="col-12 mb-3">
+                      <label for="experienciaInversion" class="form-label">¿CUÁL ES TU GRADO DE CONOCIMIENTO DE LOS INSTRUMENTOS<br>DISPONIBLES EN EL MERCADO DE CAPITALES?<small>*</small></label>
                       <select id="experienciaInversion" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="Mucha">Mucha</option>
                         <option value="Poca">Poca</option>
                         <option value="Ninguna">Ninguna</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
-                    <div class="col-12 pb-1">
-                      <label for="tipoInversion" class="form-label">¿QUÉ TIPO DE OPERACIONES PENSÁS REALIZAR?</label>
+                    <div class="col-12 mb-3">
+                      <label for="tipoInversion" class="form-label">¿QUÉ TIPO DE OPERACIONES PENSÁS REALIZAR?<small>*</small></label>
                       <select id="tipoInversion" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="FondoComun">Fondo Común</option>
@@ -625,19 +627,21 @@
                         <option value="RentaFija">Renta Fija</option>
                         <option value="Otros">Otros</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
-                    <div class="col-12 pb-1">
-                      <label for="tiempoInversion" class="form-label">¿CUÁL ES EL HORIZONTE DE TIEMPO DE TUS INVERSIONES?</label>
+                    <div class="col-12 mb-3">
+                      <label for="tiempoInversion" class="form-label">¿CUÁL ES EL HORIZONTE DE TIEMPO DE TUS INVERSIONES?<small>*</small></label>
                       <select id="tiempoInversion" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="Largo">Largo Plazo (más de 5 años)</option>
                         <option value="Mediano">Mediano Plazo (más de 1 año, menos de 5 años)</option>
                         <option value="Corto">Corto Plazo (1 año)</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
-                    <div class="col-12 pb-1">
+                    <div class="col-12 mb-3">
                       <div id="tipoVolatilidad-container">
-                        <label for="tipoVolatilidad" class="form-label">¿CUÁL ES EL GRADO DE VOLATILIDAD QUE ESTÁS DISPUESTO A ACEPTAR?</label>
+                        <label for="tipoVolatilidad" class="form-label">¿CUÁL ES EL GRADO DE VOLATILIDAD QUE ESTÁS DISPUESTO A ACEPTAR?<small>*</small></label>
                         <select id="tipoVolatilidad" class="form-select">
                           <option value="" hidden selected>Seleccionar</option>
                           <option value="Alta">Alta</option>
@@ -645,11 +649,12 @@
                           <option value="Baja">Baja</option>
                         </select>
                         <a href="#" id="tipoVolatilidad-info" class="info">?</a>
+                        <div class="form-control-info text-center"></div>
                       </div>
                     </div>
-                    <div class="col-12 pb-1">
+                    <div class="col-12 mb-3">
                       <div id="importanciaLiquidez-container">
-                        <label for="importanciaLiquidez" class="form-label">¿QUÉ TAN IMPORTANTE ES LA LIQUIDEZ PARA VOS?</label>
+                        <label for="importanciaLiquidez" class="form-label">¿QUÉ TAN IMPORTANTE ES LA LIQUIDEZ PARA VOS?<small>*</small></label>
                         <select id="importanciaLiquidez" class="form-select">
                           <option value="" hidden selected>Seleccionar</option>
                           <option value="Poco">Poco Importante</option>
@@ -657,16 +662,18 @@
                           <option value="Mucho">Muy Importante</option>
                         </select>
                         <a href="#" id="importanciaLiquidez-info" class="info">?</a>
+                        <div class="form-control-info text-center"></div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <label for="rangoInversion" class="form-label">¿CUÁL ES EL MONTO QUE VAS A INVERTIR?</label>
+                      <label for="rangoInversion" class="form-label">¿CUÁL ES EL MONTO QUE VAS A INVERTIR?<small>*</small></label>
                       <select id="rangoInversion" class="form-select">
                         <option value="" hidden selected>Seleccionar</option>
                         <option value="Bajo">Más de 1 millón</option>
                         <option value="Medio">Entre 500 mil y 1 millón</option>
                         <option value="Alto">Hasta 500 mil</option>
                       </select>
+                      <div class="form-control-info text-center"></div>
                     </div>
                   </div>
                 </div>
@@ -1014,12 +1021,10 @@ $(function() {
   });
   $btn12.click(function() {
     if(validate12()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      console.log(data);
+      submit();
+      alert(JSON.stringify(data));
     }
-    console.log(data);
-    submit();
-    alert(JSON.stringify(data));
   });
 
   function validate1() {
@@ -1387,6 +1392,49 @@ $(function() {
     data.importanciaLiquidez = $importanciaLiquidez.val();
     data.rangoInversion = $rangoInversion.val();
     
+    if(data.opinionBolsa === '') {
+      $opinionBolsa.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $opinionBolsa.removeClass('form-invalid').next().text('');
+    }
+    if(data.experienciaInversion === '') {
+      $experienciaInversion.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $experienciaInversion.removeClass('form-invalid').next().text('');
+    }
+    if(data.tipoInversion === '') {
+      $tipoInversion.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $tipoInversion.removeClass('form-invalid').next().text('');
+    }
+    if(data.tiempoInversion === '') {
+      $tiempoInversion.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $tiempoInversion.removeClass('form-invalid').next().text('');
+    }
+    if(data.tipoVolatilidad === '') {
+      $tipoVolatilidad.addClass('form-invalid').next('.form-control-info').text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $tipoVolatilidad.removeClass('form-invalid').next('.form-control-info').text('');
+    }
+    if(data.importanciaLiquidez === '') {
+      $importanciaLiquidez.addClass('form-invalid').next('.form-control-info').text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $importanciaLiquidez.removeClass('form-invalid').next('.form-control-info').text('');
+    }
+    if(data.rangoInversion === '') {
+      $rangoInversion.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
+      res = false;
+    } else {
+      $rangoInversion.removeClass('form-invalid').next().text('');
+    }
+
     return res;
   }
 
