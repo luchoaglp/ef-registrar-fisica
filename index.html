@@ -1367,7 +1367,10 @@ $(function() {
 
     if(!signaturePad.isEmpty()) {
       data.firma = signaturePad.toDataURL();
-    } 
+    } else {
+      $('canvas').css("border-color", "#ef807f");
+      res = false;
+    }
 
     return res;
   }
