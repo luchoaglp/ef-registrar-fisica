@@ -1091,6 +1091,16 @@ $(function() {
     } else {
       $email.removeClass('form-invalid').next().text('');
     }
+    if((telefonoArea.length === 3 && telefonoNumero.length === 7) ||
+      (telefonoArea.length === 2 && telefonoNumero.length === 8)) {
+      $telefonoArea.removeClass('form-invalid');
+      $telefonoNumero.removeClass('form-invalid');
+    } else {
+      $telefonoArea.addClass('form-invalid');
+      $telefonoNumero.addClass('form-invalid');
+      res = false;
+    }
+    /*
     if(telefonoArea === '') {
       $telefonoArea.addClass('form-invalid').next().text('Obligatorio').css( "color", "red");
       res = false;
@@ -1109,6 +1119,7 @@ $(function() {
     } else {
       $telefonoNumero.removeClass('form-invalid').next().text('');
     }
+    */
     if(data.cuit.length < 1) {
       $cuit.addClass('form-invalid').next().text('Obligatorio').css("color", "red");
       res = false;
