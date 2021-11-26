@@ -1092,7 +1092,8 @@ $(function() {
       $email.removeClass('form-invalid').next().text('');
     }
     if((telefonoArea.length === 3 && telefonoNumero.length === 7) ||
-      (telefonoArea.length === 2 && telefonoNumero.length === 8)) {
+       (telefonoArea.length === 2 && telefonoNumero.length === 8) ||
+       (telefonoArea.length === 4 && telefonoNumero.length === 6)) {
       $telefonoArea.removeClass('form-invalid');
       $telefonoNumero.removeClass('form-invalid');
     } else {
