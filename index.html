@@ -952,29 +952,41 @@ $(function() {
 
   $btn1.click(function() {
     if(validate1()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
   $btn2.click(function() {
     if(validate2()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
   $btn3.click(function() {
     if(validate3()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
   $btn4.click(function() {
     if(validate4()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
@@ -988,29 +1000,41 @@ $(function() {
   });
   $btn7.click(function() {
     if(validate7()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
   $btn8.click(function() {
     if(validate8()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
   $btn9.click(function() {
     if(validate9()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
   $btn10.click(function() {
     if(validate10()) {
-      swiper.slideNext();
-      window.scrollTo(0, 0);
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
+      if(ok) {
+        swiper.slideNext();
+        window.scrollTo(0, 0);
+      }
     }
     console.log(data);
   });
@@ -1021,9 +1045,12 @@ $(function() {
   });
   $btn12.click(function() {
     if(validate12()) {
-      console.log(data);
-      submit();
-      alert(JSON.stringify(data));
+      const ok = confirm("Asegurese de que los datos estén bien cargados antes de finalizar.");
+      if(ok) {
+        console.log(data);
+        submit();
+        alert(JSON.stringify(data));
+      }
     }
   });
 
