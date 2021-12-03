@@ -448,7 +448,7 @@
         <div class="container pb-4">
           <div class="row">
             <div class="col-md-6 offset-md-3 text-center">
-              <h1 class="pt-5 pb-4">DNI</h1>
+              <h1 class="pt-5 pb-4">Foto DNI</h1>
               <div class="upload-btn-wrapper mb-2">
                 <button id="btn-file1" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
                 <input type="file" id="foto1" accept=".png, .jpg, .jpeg, .pdf">
@@ -501,7 +501,10 @@
           <div class="row">
             <div class="col-md-6">
               <div class="col-md-8 offset-md-4">
-                <h3 class="mt-5 pt-5 pb-2">Servicio a tu nombre</h3>
+                <h3 class="mt-5 pt-5 pb-2">
+                  Servicio a tu nombre
+                  <a href="#" id="archivo_3-info" class="info">?</a>
+                </h3>
                 <div class="upload-btn-wrapper mb-2">
                   <button id="btn-file4" class="btn-file">MAX 15Mb<br>PDF, jpeg, jpg, png</button>
                   <input type="file" id="archivo_3" accept=".png, .jpg, .jpeg, .pdf">
@@ -792,6 +795,7 @@ $(function() {
 
   const $archivo1Info = $('#archivo_1-info');
   const $resumenBancarioInfo = $('#resumenBancario-info');
+  const $archivo3Info = $('#archivo_3-info');
 
   const $opinionBolsa = $('#opinionBolsa');
   const $experienciaInversion = $('#experienciaInversion');
@@ -952,41 +956,49 @@ $(function() {
 
   $btn1.click(function() {
     if(validate1()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      const ok = $.alert({
+        title: false,
+        content: '<b>Importante: Recordá verificar en cada paso si tus datos fueron ingresados correctamente.</b>',
+        closeIcon: true,
+        buttons: {
+          aceptar: {
+              btnClass: 'btn-blue',
+              action: function(){
+                swiper.slideNext();
+                window.scrollTo(0, 0);
+              }
+          }
+        }
+      });
     }
+    //alert(ok);
+    //if(validate1()) {
+      //const ok = confirm("Importante: Recordá verificar en cada paso si tus datos fueron ingresados correctamente.");
+      //if(ok) {
+        //swiper.slideNext();
+        //window.scrollTo(0, 0);
+      //}
+    //}
     console.log(data);
   });
   $btn2.click(function() {
     if(validate2()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
   $btn3.click(function() {
     if(validate3()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
   $btn4.click(function() {
     if(validate4()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
@@ -1000,41 +1012,29 @@ $(function() {
   });
   $btn7.click(function() {
     if(validate7()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
   $btn8.click(function() {
     if(validate8()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
   $btn9.click(function() {
     if(validate9()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
   $btn10.click(function() {
     if(validate10()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de continuar con la siguiente pantalla.");
-      if(ok) {
-        swiper.slideNext();
-        window.scrollTo(0, 0);
-      }
+      swiper.slideNext();
+      window.scrollTo(0, 0);
     }
     console.log(data);
   });
@@ -1045,12 +1045,9 @@ $(function() {
   });
   $btn12.click(function() {
     if(validate12()) {
-      const ok = confirm("Asegurese de que los datos estén bien cargados antes de finalizar.");
-      if(ok) {
-        console.log(data);
-        submit();
-        alert(JSON.stringify(data));
-      }
+      console.log(data);
+      submit();
+      alert(JSON.stringify(data));
     }
   });
 
@@ -1572,10 +1569,20 @@ $(function() {
     });
   });
 
-  $resumenBancarioInfo.click(function() {
+  $resumenBancarioInfo.click(function(e) {
+    e.preventDefault();
     $.alert({
       title: false,
       content: 'Foto o captura de pantalla',
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  $archivo3Info.click(function(e) {
+    $.alert({
+      title: false,
+      content: 'Factura de Celular, Internet, Seguro, Agua, Luz, Gas, etc.',
       closeIcon: true,
       buttons: false
     });
