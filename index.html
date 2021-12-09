@@ -66,8 +66,8 @@
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="email" class="form-label">e-mail<small>*</small></label>
-                  <input type="email" id="email" class="form-control">
+                  <label for="mail" class="form-label">e-mail<small>*</small></label>
+                  <input type="email" id="mail" class="form-control">
                   <div class="form-control-info"></div>
                 </div>
                 <div class="col-md-6">
@@ -721,7 +721,7 @@ $(function() {
   const $emailContacto = $('#email_contacto');
   const $nombre = $('#nombre');
   const $apellido = $('#apellido');
-  const $email = $('#email');
+  const $email = $('#mail');
   const $cuit = $('#cuit');
   const $telefonoArea = $('#telefono-area');
   const $telefonoNumero = $('#telefono-numero');
@@ -962,23 +962,15 @@ $(function() {
         closeIcon: true,
         buttons: {
           aceptar: {
-              btnClass: 'btn-blue',
-              action: function(){
-                swiper.slideNext();
-                window.scrollTo(0, 0);
-              }
+            btnClass: 'btn-blue',
+            action: function() {
+              swiper.slideNext();
+              window.scrollTo(0, 0);
+            }
           }
         }
       });
     }
-    //alert(ok);
-    //if(validate1()) {
-      //const ok = confirm("Importante: Recordá verificar en cada paso si tus datos fueron ingresados correctamente.");
-      //if(ok) {
-        //swiper.slideNext();
-        //window.scrollTo(0, 0);
-      //}
-    //}
     console.log(data);
   });
   $btn2.click(function() {
@@ -1058,7 +1050,7 @@ $(function() {
     data.email_contacto = $emailContacto.val().trim();
     data.nombre = $nombre.val().trim();
     data.apellido = $apellido.val().trim();
-    data.email = $email.val().trim();
+    data.mail = $email.val().trim();
 
     const telefonoArea = $telefonoArea.val().trim();
     const telefonoNumero = $telefonoNumero.val().trim();
@@ -1106,10 +1098,10 @@ $(function() {
     } else {
       $apellido.removeClass('form-invalid').next().text('');
     }
-    if(data.email === '') {
+    if(data.mail === '') {
       $email.addClass('form-invalid').next().text('Obligatorio').css( "color", "red");
       res = false;
-    } else if(!validateEmail(data.email)) {
+    } else if(!validateEmail(data.mail)) {
       $email.addClass('form-invalid').next().text('Email inválido').css("color", "red");
       res = false;
     } else {
