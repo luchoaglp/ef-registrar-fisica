@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="version" content="1.2.19.0">
+  <link rel="shortcut icon" href="https://estructurasfinancieras.com.ar/static/favicon.ico?v=1.2.19.0">
+  <title>Estructuras Financieras - Programa Partner</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/swiper@7/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  <link href="css/partner.css?v=1.2.19.0" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="col-md-8 offset-md-2 text-center">
+      <h1>
+        <img class="img-fluid" src="img/e-f-white.png" alt="Estructuras Financieras">
+        PROGRAMA PARTNER
+      </h1>
+      <h2 class="my-3">Es una plataforma pensada para que el Partner incorpore soluciones<br> financieras a los servicios que le brinda a sus clientes.</h2>
+      <ul class="mb-5">
+        <li>A trav&eacute;s de un proceso sencillo se gestiona la titularidad de una cuenta comitente en Estructuras Financieras.</li>
+        <li>El proceso es gratuito, puede realizarse online y no demora m&aacute;s de 24-48hs h&aacute;biles.</li>
+        <li>El marco regulatorio es sumamente transparente y seguro.</li>
+        <li>El inversor es &uacute;nico titular de cada una de sus inversiones y &uacute;nicamente &eacute;l dispone de las mismas.</li>
+        <li class="li">Ning&uacute;n intermediario o agente burs&aacute;til puede realizar operaciones y movimientos por cuenta y orden de un inversor sin previo consentimiento.</li>
+        <li>Peri&oacute;dicamente Estructuras Financieras y Caja de Valores env&iacute;a res&uacute;menes de cuenta a todos los inversores del mercado.</li>
+      </ul>
+      <div class="row btn-container mb-5">
+        <div class="col-md-4 mb-3">
+          <button type="button" id="btn1" class="btn btn-primary w-100">SERVICIOS AL PARTNER</button>
+        </div>
+        <div class="col-md-4 mb-3">
+          <button type="button" id="btn2" class="btn btn-primary w-100">INVERSIONES</button>
+        </div>
+        <div class="col-md-4 mb-3">
+          <button type="button" id="btn3" class="btn btn-primary w-100">FINANCIAMIENTO PYME</button>
+        </div>
+      </div>
+      <div class="row form">
+        <div class="col-md-10 offset-md-2">
+          <h4><b>Hablemos.</b> Para fidelizar a sus clientes sumando soluciones financieras.</h4>
+        </div>
+      </div>
+      <form action="suscribirAnalisis" method="post" id="suscribirAnalisis">
+      <div class="row form">
+        <div class="col-md-2 form-left">
+          FORMULARIO DE CONTACTO
+        </div>
+        <div class="col-md-10">
+          <div class="form-group mb-2">
+            <input type="text" name="efName" id="efName" class="form-control" placeholder="Nombre y apellido" required="">
+          </div>
+          <div class="row form-bottom">
+            <div class="col-md-4">
+              <div class="form-group mb-2">
+                <input type="text" name="efPhone" id="efPhone" class="form-control" placeholder="Teléfono" maxlength="10">
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group mb-2">
+                <input type="email" name="efEmail" id="efEmail" class="form-control" placeholder="Email" required="">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 text-end mb-5">
+          <button type="button" id="submit" class="submit">ENVIAR &#9658;</button>
+        </div>
+      </div>
+      </form>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script>
+$(function() {
+
+  const $btn1 = $('#btn1');
+  const $btn2 = $('#btn2');
+  const $btn3 = $('#btn3');
+
+  $btn1.click(function() {
+    $.alert({
+      title: false,
+      columnClass: 'col-md-6',
+      animation: 'rotateYR',
+      closeAnimation: 'rotateYR',
+      content: `<b>- Los funcionarios de la empresa estar&aacute;n a disposici&oacute;n para asistir y asesorar financieramente al cliente referenciado por el Partner, con todas las herramientas que dispone Estructuras Financieras<br>
+      - Dise&ntilde;o de informes especiales a medida para la base de clientes del Partner.<br>- Acompa&ntilde;amiento en reuniones presenciales o virtuales con clientes.</b>`,
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  $btn2.click(function() {
+    $.alert({
+      title: false,
+      columnClass: 'col-md-6',
+      animation: 'rotateYR',
+      closeAnimation: 'rotateYR',
+      content: `<b>Administraci&oacute;n de carteras de inversi&oacute;n<br>
+      Corto plazo: Busca obtener rentabilidad de los recursos de corto plazo, atendiendo a las necesidades operativas.
+      Mediano/Largo plazo: Busca conservar el valor real de la cartera, superando incrementos de precios de la econom&iacute;a.<br><br>
+      Asesoramiento transaccional<br>
+      Busca dar respuesta inmediata a las necesidades transaccionales de nuestros clientes sin importar en absoluto el monto o plazo requerido por estos para realizar las operaciones.</b>`,
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  $btn3.click(function() {
+    $.alert({
+      title: false,
+      columnClass: 'col-md-6',
+      animation: 'rotateYR',
+      closeAnimation: 'rotateYR',
+      content: `<b>Conseguimos la mejor financiaci&oacute;n a empresas PYME a trav&eacute;s del Mercado de Capitales<br><br>
+      CPD (Cheques de Pago Diferido) / PAGAR&Eacute; de proveedores<br>
+      CPD/ PAGAR&Eacute; de clientes<br>
+      CPD/ PAGAR&Eacute; propios<br>
+      Obligaciones Negociables PYME Garantizadas<br>
+      Fideicomisos Financieros<br>
+      PAGAR&Eacute; propios + fideicomisos Garant&iacute;a</b>`,
+      closeIcon: true,
+      buttons: false
+    });
+  });
+
+  /*
+  $('#submit').click(function() {
+    $('#suscribirAnalisis').ajaxForm({
+      dataType: 'json',
+      beforeSubmit: function (arr, $form, options) {
+        jpmBlock();
+      },
+      success: function (data) {
+        jpmUnBlock();
+        $.blockUI({
+          css: { backgroundColor: '#d4edda', color: '#155724', padding: '40px' },
+          message: 'Registro enviado correctamente'
+        });
+        setTimeout(function () {
+          jpmUnBlock();
+        }, 3000);
+      },
+      error: function (data) {
+        console.log(data);
+        alert("Error");
+      }
+    });
+  });
+  */
+
+});
+</script>
+
+</body>
+</html>
